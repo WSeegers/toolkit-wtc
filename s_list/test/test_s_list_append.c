@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 08:19:29 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 09:03:23 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/28 12:37:27 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,41 @@ int 	test2(void)
 	return (1);
 }
 
+int 	test3(void)
+{
+	char *data[4];
+	t_list *list;
+	t_list_node *node;
+	int i;
+
+	data[0] = f_strdup("asdfl;jhasdf;");
+	data[1] = f_strdup("asdfl;jhasf;d&*");
+	data[2] = f_strdup("asdfl;kj;ohjasf8");
+	data[3] = f_strdup("jkeasdfgniodsf");
+	list = s_list_create(NULL);
+	i = -1;
+	while (++i < 4)
+		s_list_append(list,	data[i]);
+	node = list->tail;
+	if (node->next)
+		return (0);
+	i = 1;
+	while (node->prev)
+	{
+		i++;
+		node = node->prev;
+	}
+	if (i < 4)
+		return(0);
+	return (1);
+}
+
 int		main(void)
 {
 	int		(*test[])(void) = {
 		&test1, 
 		&test2,
+		&test3,
 		NULL};
 	int i  = -1;
 

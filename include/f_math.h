@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_list_append.c                                    :+:      :+:    :+:   */
+/*   f_math.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 18:24:25 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 12:30:22 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/28 12:10:41 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "s_list.h"
+#ifndef MATH_H
+# define MATH_H
 
-void	s_list_append(t_list *list, void *data)
-{
+int		f_abs(int nbr);
 
-	if (list->size++)
-	{
-		list->tail->next = s_list_node_create(list->tail, NULL, data);
-		list->tail = list->tail->next;
-	}
-	else
-	{
-		list->head = s_list_node_create(NULL, NULL, data);
-		list->tail = list->head;
-	}
-}
+#endif

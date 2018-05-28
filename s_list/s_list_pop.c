@@ -6,53 +6,81 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 10:04:24 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 10:21:55 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/28 12:54:26 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
-#include "f_print_h"
+#include "s_list.h"
+#include "f_memory.h"
+#include "f_math.h"
 
-static pop_head(size_t i, t_list *list)
+static void remove_node(t_list *list, t_list_node *node)
 {
-	t_node node;
+	if (node->prev && node->next)
+	{
+		node->prev->next = node->next;
+		node->next->prev = node->prev;
+	}
+	else if (node->next)
+	{
+		list->head = node->next;
+		node->next->prev = NULL;
+	}
+	else if (node->prev)
+	{
+		list->tail = node->prev;
+		node->prev->next = NULL;
+	}
+	else 
+	{
+		list->tail = NULL;
+		list->head = NULL;
+	}
+}
+
+static void *pop_head(t_list *list, size_t i)
+{
+	t_list_node *node;
 	void *data;
 	
 	node = list->head;
 	while (i--)
 		node = node->next;
 	data = node->data;
-	node->prev->next = node->next;
-	node->next->prev = node->prev;
-	memdel((void**)&node);
+	remove_node(list, node);	
+	f_memdel((void**)&node);
 	return (data);
 }
 
-static pop_tail(size_t i, t_list *list)
+#include <stdio.h>
+
+static void *pop_tail(t_list *list, size_t i)
 {
-	t_node node;
+	t_list_node *node;
 	void *data;
-	
+
+	printf("sanity");
 	node = list->tail;
 	while (--i)
 		node = node->prev;
 	data = node->data;
-	node->prev->next = node->next;
-	node->next->prev = node->prev;
-	memdel((void**)&node);
+	remove_node(list, node);	
+	f_memdel((void**)&node);
 	return (data);
-
 }
 
-void	*s_list_pop(int index, t_list *list)
+void	*s_list_pop(t_list *list, int index)
 {
-	if (index > t_list->size || -index >= index->size)
-	{
-		f_print_err("Index out of bounds");
+	int size_i;
+	
+	size_i = list->size;
+	if (list->size == 0)
 		return (NULL);
-	}
+	if (index > size_i || -index >= size_i)
+		return (NULL);
+	--list->size;
 	if (index < 0)
-		return (pop_tail(-index, list));
+		return (pop_tail(list, f_abs(index)));
 	else
-		return (pop_head(index, list);
+		return (pop_head(list, f_abs(index)));
 }
