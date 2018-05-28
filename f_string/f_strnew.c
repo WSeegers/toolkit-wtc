@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   f_strnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 23:38:55 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/05/23 12:49:34 by wseegers         ###   ########.fr       */
+/*   Created: 2018/04/22 15:11:10 by WSeegers          #+#    #+#             */
+/*   Updated: 2018/05/28 08:03:45 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#include "f_memory.h"
 
-char	*ft_strdup(const char *s)
+char	*f_strnew(size_t n)
 {
-	int		len;
-	char	*dup;
-
-	len = 0;
-	len = ft_strlen(s);
-	if (!(dup = (char*)malloc(sizeof(*dup) * (len + 1))))
-		return (NULL);
-	dup[len] = '\0';
-	while (--len >= 0)
-	{
-		dup[len] = s[len];
-	}
-	return (dup);
+	return ((char*)f_memalloc(n + 1));
 }

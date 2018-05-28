@@ -6,12 +6,14 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 16:49:07 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/27 17:26:23 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/28 06:28:41 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef F_MEMORY_H
 # define F_MEMORY_H
+
+#include <stddef.h>
 
 void	f_bzero(void *s, size_t n);
 void	*f_memalloc(size_t size);

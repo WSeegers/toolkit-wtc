@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_strlen.c                                         :+:      :+:    :+:   */
+/*   s_list_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 17:39:36 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 08:07:43 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/28 04:31:24 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/28 09:26:16 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "s_list.h"
+#include "f_memory.h"
 
-size_t	f_strlen(const char *str)
+t_list	*s_list_create(void (*del_data)(void*))
 {
-	size_t len;
+	t_list *list;
 
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
+	list = 	(t_list*)f_memalloc(sizeof(*list));
+	s_list_init(list, del_data);
+	return (list);
 }

@@ -6,9 +6,11 @@
 /*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 15:34:43 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/05/27 17:24:36 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/28 06:29:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 void	*f_memset(void *s, int c, size_t n)
 {

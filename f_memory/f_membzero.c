@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   f_bzero.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/22 15:11:10 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/05/23 11:22:19 by wseegers         ###   ########.fr       */
+/*   Created: 2018/04/14 21:35:05 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/28 06:28:51 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "f_memory.h"
 
-char	*ft_strnew(size_t n)
+void	f_bzero(void *s, size_t n)
 {
-	return ((char*)ft_memalloc(n + 1));
+	f_memset(s, 0, n);
 }

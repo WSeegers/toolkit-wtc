@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/27 17:39:08 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/28 08:14:56 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 #include <stddef.h>
 
-size_t	f_strlen(char *str);
+size_t	f_strlen(const char *str);
+int		f_strcmp(const char *s1, const char *s2);
+char	*f_strnew(size_t n);
+void	f_strdel(char **as);
+char	*f_strdup(const char *s);
 
 #endif

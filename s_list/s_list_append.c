@@ -6,13 +6,13 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 18:24:25 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/27 18:44:43 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/28 05:05:49 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s_list.h"
 
-void	s_list_append(t_list list, void *data)
+void	s_list_append(t_list *list, void *data)
 {
 
 	if (list->size++)

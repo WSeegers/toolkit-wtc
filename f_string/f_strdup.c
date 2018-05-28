@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_bzero.c                                          :+:      :+:    :+:   */
+/*   f_strdup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/14 21:35:05 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/27 16:53:18 by wseegers         ###   ########.fr       */
+/*   Created: 2018/04/16 23:38:55 by WSeegers          #+#    #+#             */
+/*   Updated: 2018/05/28 08:14:58 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "f_memory.h"
+#include "f_string.h"
 
-void	f_bzero(void *s, size_t n)
+char	*f_strdup(const char *s)
 {
-	f_memset(s, 0, n);
+	int		len;
+	char	*dup;
+
+	len = 0;
+	len = f_strlen(s);
+	if (!(dup = f_strnew(len + 1)))
+		return (NULL);
+	dup[len] = '\0';
+	while (--len >= 0)
+	{
+		dup[len] = s[len];
+	}
+	return (dup);
 }
