@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:19:13 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 12:54:01 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/28 13:54:47 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,45 @@ int 	test2(void)
 	return (1);
 }
 
+int 	test3(void)
+{
+	char *data[8];
+	t_list *list;
+	int i;
+
+	data[0] = f_strdup("0 asdfl;jhasdf;");
+	data[1] = f_strdup("1 asdfl;jhasf;d&*");
+	data[2] = f_strdup("2 asdfl;kj;ohjasf8");
+	data[3] = f_strdup("3 jkeasdfgniodsf");
+	data[4] = f_strdup("4 jkeasdfgniodsf");
+	data[5] = f_strdup("5 jkeasdfgniodsf");
+	data[6] = f_strdup("6 jkeasdfgniodsf");
+	data[7] = f_strdup("7 jkeasdfgniodsf");
+	list = s_list_create(NULL);
+	i = -1;
+	while (++i < 8)
+		s_list_append(list,	data[i]);
+	if (s_list_pop(list, 5) != data[5])
+		return (0);
+	if (s_list_pop(list, 2) != data[2])
+		return (0);
+	if (s_list_pop(list, -2) != data[6])
+		return (0);
+	i = 0;
+	while (s_list_pop(list, -1))
+		i++;
+	if (i != 5)
+		return (0);
+	s_list_clear(list);
+	return (1);
+}
+
 int		main(void)
 {
 	int		(*test[])(void) = {
 		&test1, 
 		&test2,
+		&test3,
 		NULL};
 	int i  = -1;
 
