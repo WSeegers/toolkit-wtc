@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   new_str.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/30 07:10:56 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/30 07:49:03 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "s_dstr.h"
+#include "f_memory.h"
+#include "f_string.h"
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
+t_dstr	*new_str(char *str)
+{
+	t_dstr *dstr;
+	size_t len
+		
+	len = strlen(str);
+	dstr = init_str(len);
+	f_strcpy(dstr->str, str);
+	dstr->len = len;
+	return (dstr);
+}
 
-#endif
+
+

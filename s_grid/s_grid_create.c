@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   s_grid_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/29 11:49:34 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/29 13:52:04 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "s_grid.h"
+#include "f_memory.h"
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
+t_grid				*s_grid_create(int height, int width)
+{
+	t_grid	*grid;
 
-#endif
+	grid = (t_grid*)f_memalloc(sizeof(*grid));
+	s_grid_init(grid, height, width);
+	return (grid);
+}

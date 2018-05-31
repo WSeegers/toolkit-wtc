@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   f_writef.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/31 15:33:15 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/31 16:42:45 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include <unistd.h>
+#include "f_io.h"
+#include "f_print.h"
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
-
-#endif
+ssize_t f_writef(t_file *file, char *ptr, size_t n)
+{
+	if (file->fd_out > 0)
+		return (write(file->fd_out, ptr ,n));
+	return (0);
+}

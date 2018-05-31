@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/28 04:37:44 by wseegers          #+#    #+#              #
-#    Updated: 2018/05/29 14:54:19 by wseegers         ###   ########.fr        #
+#    Updated: 2018/05/29 14:52:13 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror
 INC := -I ./include -I ../include
 
-SRC := $(wildcard f_mem*.c)
+SRC := $(wildcard s_grid*.c)
 
 BIN_PATH = ../bin
 BIN := $(addprefix $(BIN_PATH)/, $(SRC:.c=.o))

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   f_io.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/30 09:35:54 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/31 16:37:27 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#ifndef F_IO_H
+# define F_IO_H
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
+# include <unistd.h>
+# include <stddef.h>
+# include "s_file.h"
+
+t_file 	*f_openf(char *path, char mode);
+ssize_t	f_readf(char *ptr, t_file *file, size_t n);
+ssize_t f_writef(t_file *file, char *ptr, size_t n);
+void	f_close(t_file *file);
 
 #endif

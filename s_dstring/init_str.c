@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   init_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/30 06:58:53 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/30 07:10:29 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "s_dstr.h"
+#include "f_memory.h"
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
+t_dstr	*init_str(size_t capacity)
+{
+	t_dstr *dstr;
 
-#endif
+	dstr = f_memalloc(sizeof(*dstr));
+	capacity = ((capacity + 1) / DSTR_INIT_SIZE) * (DSTR_INIT_SIZE + 1);
+	dstr->str = (char*)f_memalloc(capacity);
+	dstr->cap = capacity;
+	dstr->len = 0;
+}

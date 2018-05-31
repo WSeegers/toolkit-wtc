@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   f_feedf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/30 08:00:42 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/31 15:21:59 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "s_file.h"
+#include "f_memory.h"
+#include "f_string.h"
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
-
-#endif
+ssize_t	f_feedf(t_file *file)
+{
+	f_bzero(file->buf, file->cap);
+	file->lread = read(file->fd_in, file->buf, file->cap);
+	if (!file->lread)
+		file->lread = f_strlen(file->buf);
+	file->fpos = 0;
+	return (file->lread);
+}

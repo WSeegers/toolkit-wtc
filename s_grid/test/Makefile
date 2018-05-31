@@ -5,30 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/28 04:37:44 by wseegers          #+#    #+#              #
-#    Updated: 2018/05/29 14:54:19 by wseegers         ###   ########.fr        #
+#    Created: 2018/05/28 05:56:36 by wseegers          #+#    #+#              #
+#    Updated: 2018/05/29 14:30:26 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
-INC := -I ./include -I ../include
+INC := -I ../include -I ../../include
 
-SRC := $(wildcard f_mem*.c)
+SRC := $(wildcard test_s_grid*.c)
+TESTS := $(SRC:test_%.c=run_%)
+BIN := $(wildcard ../../bin/*.o)
 
-BIN_PATH = ../bin
-BIN := $(addprefix $(BIN_PATH)/, $(SRC:.c=.o))
-DEP := $(BIN:.o=.d)
+all : $(TESTS)
 
-all: $(BIN)
-
-$(BIN_PATH)/%.o :  %.c
-	@mkdir -p $(BIN_PATH)
-	$(CC) $(CFLAGS) $(INC) -MMD -c $< -o $@
-
--include $(DEP)
+run_% : test_%.c 
+	$(CC) $(CFLAGS) $(INC) -o $@ $< $(BIN)
 
 clean :
-	rm -f $(BIN) $(DEP)
+	@echo "Nothing to clean"
 
-re : clean all
+fclean :
+	rm -f $(TESTS)
+
+re : fclean all

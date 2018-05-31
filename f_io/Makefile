@@ -6,15 +6,15 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/28 04:37:44 by wseegers          #+#    #+#              #
-#    Updated: 2018/05/29 14:54:19 by wseegers         ###   ########.fr        #
+#    Updated: 2018/05/31 17:06:16 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
-INC := -I ./include -I ../include
+INC := -I ../include
 
-SRC := $(wildcard f_mem*.c)
+SRC := f_feedf.c f_initf.c f_openf.c f_readf.c f_writef.c f_stdio.c
 
 BIN_PATH = ../bin
 BIN := $(addprefix $(BIN_PATH)/, $(SRC:.c=.o))
@@ -31,4 +31,8 @@ $(BIN_PATH)/%.o :  %.c
 clean :
 	rm -f $(BIN) $(DEP)
 
-re : clean all
+fclean : clean
+
+re : fclean all
+
+export F_IO := $(BIN)

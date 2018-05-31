@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   s_dstr.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/30 06:52:18 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/30 07:11:08 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#ifndef S_DSTR
+# define S_DSTR
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
+# include <stddef.h>
 
-#endif
+# define DSTR_INIT_SIZE (8 * 4)
+
+typedef struct	s_dstr
+{
+	char	*str;
+	size_t	len;
+	size_t 	cap;
+}				t_dstr;
+
+t_dstr	*init_str(size_t capacity);
+t_dstr	*new_str(char *str);
+
+# define S_DSTR

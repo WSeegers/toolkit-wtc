@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   s_grid_search.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/29 15:02:28 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/29 15:29:59 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include <stdbool.h>
+#include "s_grid.h"
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
+void	s_grid_search(t_grid *grid, t_grid_point *point, bool (*f_filter)(int))
+{
+	int	row;
+	int	col;
 
-#endif
+	row = -1;
+	while (row < grid->height)
+	{
+		col = -1;
+		while (col < grid->width)
+		{
+			if (f_filter(s_grid_get(grid, row, col)))
+			{
+				point->row = row;
+				point->col = col;
+				point->value = s_grid_get(grid, row, col);
+			}
+		}
+	}
+}

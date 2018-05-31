@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/28 04:37:44 by wseegers          #+#    #+#              #
-#    Updated: 2018/05/29 14:54:19 by wseegers         ###   ########.fr        #
+#    Created: 2018/05/30 10:43:28 by wseegers          #+#    #+#              #
+#    Updated: 2018/05/31 16:00:58 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
-INC := -I ./include -I ../include
+INC := -I ../../include -I ../lib-utest/include
 
-SRC := $(wildcard f_mem*.c)
+SRC := unit_f_initf.c unit_f_openf.c unit_f_readf.c unit_f_writef.c
 
 BIN_PATH = ../bin
 BIN := $(addprefix $(BIN_PATH)/, $(SRC:.c=.o))
@@ -29,6 +29,8 @@ $(BIN_PATH)/%.o :  %.c
 -include $(DEP)
 
 clean :
-	rm -f $(BIN) $(DEP)
+	rm -f $(BIN)
 
-re : clean all
+fclean : clean
+
+re : all

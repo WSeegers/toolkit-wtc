@@ -5,30 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/28 04:37:44 by wseegers          #+#    #+#              #
-#    Updated: 2018/05/29 14:54:19 by wseegers         ###   ########.fr        #
+#    Created: 2018/05/30 03:41:36 by wseegers          #+#    #+#              #
+#    Updated: 2018/05/31 16:55:48 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = run_test
+
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
-INC := -I ./include -I ../include
+CFLAGS = -Werror -Wall -Wextra -I lib-utest/include 
+LIB = -L lib-utest/ -lutest ../toolkit-wtc.a
 
-SRC := $(wildcard f_mem*.c)
+MAIN = test_main.c
+BIN_PATH = bin
+BIN = 
+DEP := $(BIN:%.o=%.d)
 
-BIN_PATH = ../bin
-BIN := $(addprefix $(BIN_PATH)/, $(SRC:.c=.o))
-DEP := $(BIN:.o=.d)
+all : make_all $(NAME)
 
-all: $(BIN)
+make_all : 
+	make -C	lib-utest 
+	make -C ../
+	make -C f_io
 
-$(BIN_PATH)/%.o :  %.c
-	@mkdir -p $(BIN_PATH)
-	$(CC) $(CFLAGS) $(INC) -MMD -c $< -o $@
+$(NAME) : $(MAIN) $(wildcard $(BIN_PATH)/*.o)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIB)
 
--include $(DEP)
+clean : 
+	rm -rf $(BIN_PATH)
 
-clean :
-	rm -f $(BIN) $(DEP)
+fclean : clean
+	rm -f $(NAME)
+	make fclean -C lib-utest 
+	make fclean -C ../
+	make fclean -C f_io
+	
 
-re : clean all
+re : fclean all 

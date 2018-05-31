@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_math.h                                           :+:      :+:    :+:   */
+/*   s_grid_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:19:57 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/29 11:44:31 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/29 14:04:03 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "s_grid.h"
+#include "f_memory.h"
 
-int		f_abs(int nbr);
-long	f_min(long base, long test);
-long	f_max(long base, long test);
-
-#endif
+void 				s_grid_init(t_grid *grid, int height, int width)
+{
+	grid->height = height;
+	grid->width = width;
+	if (height * width > 0)
+		grid->plane = (int*)f_memalloc(height * width * sizeof(*grid->plane));
+	else 
+		grid->plane = NULL;
+}
