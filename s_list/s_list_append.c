@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 18:24:25 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 12:30:22 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 20:42:25 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	s_list_append(t_list *list, void *data)
 {
-
 	if (list->size++)
 	{
 		list->tail->next = s_list_node_create(list->tail, NULL, data);

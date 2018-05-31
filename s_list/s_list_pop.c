@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 10:04:24 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 13:58:30 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 21:21:04 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "f_memory.h"
 #include "f_math.h"
 
-static void remove_node(t_list *list, t_list_node *node)
+static void	remove_node(t_list *list, t_list_node *node)
 {
 	if (node->prev && node->next)
 	{
@@ -31,45 +31,45 @@ static void remove_node(t_list *list, t_list_node *node)
 		list->tail = node->prev;
 		node->prev->next = NULL;
 	}
-	else 
+	else
 	{
 		list->tail = NULL;
 		list->head = NULL;
 	}
 }
 
-static void *pop_head(t_list *list, size_t i)
+static void	*pop_head(t_list *list, size_t i)
 {
-	t_list_node *node;
-	void *data;
-	
+	t_list_node	*node;
+	void		*data;
+
 	node = list->head;
 	while (i--)
 		node = node->next;
 	data = node->data;
-	remove_node(list, node);	
+	remove_node(list, node);
 	f_memdel((void**)&node);
 	return (data);
 }
 
-static void *pop_tail(t_list *list, size_t i)
+static void	*pop_tail(t_list *list, size_t i)
 {
-	t_list_node *node;
-	void *data;
-	
+	t_list_node	*node;
+	void		*data;
+
 	node = list->tail;
 	while (--i)
 		node = node->prev;
 	data = node->data;
-	remove_node(list, node);	
+	remove_node(list, node);
 	f_memdel((void**)&node);
 	return (data);
 }
 
-void	*s_list_pop(t_list *list, int index)
+void		*s_list_pop(t_list *list, int index)
 {
-	int size_i;
-	
+	int		size_i;
+
 	size_i = list->size;
 	if (list->size == 0)
 		return (NULL);

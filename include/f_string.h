@@ -6,14 +6,14 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 09:53:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 20:28:57 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef F_STRING_H
 # define F_STRING_H
 
-#include <stddef.h>
+# include <stddef.h>
 
 size_t	f_strlen(const char *str);
 int		f_strcmp(const char *s1, const char *s2);

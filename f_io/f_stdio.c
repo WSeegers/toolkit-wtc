@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 15:08:20 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 16:09:00 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 21:23:39 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_file	*f_stdio(int std_fd)
 	stdi = (t_file)STDIN_;
 	stdo = (t_file)STDOUT_;
 	stde = (t_file)STDERR_;
-
 	if (std_fd == 0)
 		return (&stdi);
 	if (std_fd == 1)
@@ -30,5 +29,5 @@ t_file	*f_stdio(int std_fd)
 	if (std_fd == 2)
 		return (&stde);
 	f_print_err("f_stdio.c: std_fd must be 0, 1, 2");
-	return (NULL);	
+	return (NULL);
 }

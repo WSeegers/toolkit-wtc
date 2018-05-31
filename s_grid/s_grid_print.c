@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 13:13:41 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/29 15:28:18 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 20:33:51 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "f_print.h"
 #include "f_math.h"
 
-void		s_grid_print_fd(int fd, t_grid *grid)
+void	s_grid_print_fd(int fd, t_grid *grid)
 {
 	int row;
 	int col;

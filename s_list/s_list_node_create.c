@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 18:31:23 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/28 05:17:52 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 20:41:18 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "f_memory.h"
 
 t_list_node	*s_list_node_create(t_list_node *prev, t_list_node *next,
-																 void* data)
+																void *data)
 {
 	t_list_node *node;
 

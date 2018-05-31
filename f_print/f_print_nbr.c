@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 00:07:21 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/29 14:55:17 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 20:40:00 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ void		f_print_nbr_fd(int fd, int nbr)
 	print_nbr_rec(fd, unbr);
 }
 
-void	f_print_nbr(int nbr)
+void		f_print_nbr(int nbr)
 {
 	f_print_nbr_fd(1, nbr);
 }
-

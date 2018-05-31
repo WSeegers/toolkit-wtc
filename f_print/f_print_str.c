@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:31:02 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/29 13:09:42 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 20:40:21 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ ssize_t	f_print_str_fd(int fd, char *str)
 	return (write(fd, str, f_strlen(str)));
 }
 
-ssize_t f_print_str(char *str)
+ssize_t	f_print_str(char *str)
 {
 	return (f_print_str_fd(1, str));
 }
 
-ssize_t f_print_err(char *str)
+ssize_t	f_print_err(char *str)
 {
 	return (f_print_str_fd(2, str));
 }
