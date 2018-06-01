@@ -6,11 +6,11 @@
 /*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 13:48:16 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/06/02 00:50:42 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/02 00:57:13 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "f_string.c"
+#include "f_string.h"
 
 int		f_isspace(int c)
 {
