@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 22:39:44 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/01 14:38:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ size_t	f_strlcat(char *dest, const char *src, size_t size);
 size_t	f_strnlen(const char *s, size_t maxlen);
 char 	*f_strresize(char **old, size_t n);
 char	*f_strncpy(char *dest, const char *src, size_t n);
+char	*f_strchr(const char *s, int c);
+long	f_strtol(const char *nptr, char **endptr, int base);
 
 #endif

@@ -6,17 +6,18 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 17:04:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/23 12:51:44 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/01 14:38:15 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <limits.h>
+#include "f_string.h"
 
-static t_uchar	charmap(char c)
+static unsigned char	charmap(char c)
 {
 	char	chr;
 
-	chr = ft_toupper(c);
+	chr = f_toupper(c);
 	if (chr >= '0' && chr <= '9')
 		return (chr - '0');
 	if (chr >= 'A' && chr <= 'Z')
@@ -24,7 +25,7 @@ static t_uchar	charmap(char c)
 	return (127);
 }
 
-static int		getbase(const char **nptr, int base)
+static int				getbase(const char **nptr, int base)
 {
 	const char	*ptr;
 
@@ -42,7 +43,7 @@ static int		getbase(const char **nptr, int base)
 	return (base);
 }
 
-long			ft_strtol(const char *nptr, char **endptr, int base)
+long					f_strtol(const char *nptr, char **endptr, int base)
 {
 	int		neg;
 	long	result;
@@ -52,7 +53,7 @@ long			ft_strtol(const char *nptr, char **endptr, int base)
 		return (0);
 	neg = 0;
 	result = 0;
-	while (ft_isspace(*nptr))
+	while (f_isspace(*nptr))
 		nptr++;
 	if (*nptr == '-' || *nptr == '+')
 		if (*nptr++ == '-')
@@ -63,7 +64,7 @@ long			ft_strtol(const char *nptr, char **endptr, int base)
 		{
 			if (endptr)
 				*endptr = (char*)nptr;
-			return (FT_LONG_MAX + neg);
+			return (LONG_MAX + neg);
 		}
 	if (endptr)
 		*endptr = (char*)nptr;
