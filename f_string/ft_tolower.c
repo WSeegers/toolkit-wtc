@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isblank.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/21 13:51:54 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/04/25 21:01:54 by wseegers         ###   ########.fr       */
+/*   Created: 2018/04/21 00:16:11 by WSeegers          #+#    #+#             */
+/*   Updated: 2018/05/23 10:32:25 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isblank(int c)
+int		ft_tolower(int c)
 {
-	return (c == ' ' || c == '\t');
+	char chr;
+
+	if (c == -1)
+		return (-1);
+	if (c >= 0 && c < 256)
+	{
+		chr = c;
+		if (ft_isupper(c))
+			return (c | 0x20);
+	}
+	return (c);
 }

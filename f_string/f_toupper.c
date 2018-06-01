@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
+/*   f_toupper.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/21 00:05:14 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/04/21 12:48:40 by WSeegers         ###   ########.fr       */
+/*   Created: 2018/04/20 23:59:41 by WSeegers          #+#    #+#             */
+/*   Updated: 2018/06/02 00:45:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_islower(int c)
+#include "f_string.h"
+
+int		f_toupper(int c)
 {
-	return (c >= 'a' && c <= 'z');
+	char chr;
+
+	if (c == -1)
+		return (-1);
+	if (c >= 0 && c < 256)
+	{
+		chr = c;
+		if (f_islower(chr))
+			return (chr ^ 0x20);
+	}
+	return (c);
 }

@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/01 14:33:56 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/02 00:55:34 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 
 F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\
 			   f_strnew.c f_strnlen.c f_strccpy.c f_strresize.c f_strncpy.c\
-			   f_strchr.c
+			   f_strchr.c f_islower.c f_toupper.c f_isspace.c f_isblank.c\
+			   f_atoi.c f_f_strtol.c
 F_STRING = $(addprefix f_string/, $(F_STRING_SRC))
 
 S_GRID_SRC = s_grid_create.c s_grid_get.c s_grid_init.c s_grid_print.c\

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtol.c                                        :+:      :+:    :+:   */
+/*   f_strtol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 17:04:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/01 14:38:15 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/02 00:51:16 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "f_string.h"
 
-static unsigned char	charmap(char c)
+static unsigned char	f_charmap(char c)
 {
 	char	chr;
 
@@ -25,7 +25,7 @@ static unsigned char	charmap(char c)
 	return (127);
 }
 
-static int				getbase(const char **nptr, int base)
+static int				f_getbase(const char **nptr, int base)
 {
 	const char	*ptr;
 
@@ -58,8 +58,8 @@ long					f_strtol(const char *nptr, char **endptr, int base)
 	if (*nptr == '-' || *nptr == '+')
 		if (*nptr++ == '-')
 			neg = 1;
-	base = getbase(&nptr, base);
-	while ((digit = charmap(*nptr++)) < base)
+	base = f_getbase(&nptr, base);
+	while ((digit = f_charmap(*nptr++)) < base)
 		if ((result = (result * base) + digit) < 0)
 		{
 			if (endptr)

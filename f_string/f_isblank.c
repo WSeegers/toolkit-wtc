@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   f_isblank.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/14 20:54:25 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/05/10 18:21:49 by wseegers         ###   ########.fr       */
+/*   Created: 2018/04/21 13:51:54 by WSeegers          #+#    #+#             */
+/*   Updated: 2018/06/02 00:48:11 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_atoi(const char *nptr)
+int		f_isblank(int c)
 {
-	long int ret;
-
-	ret = ft_strtol(nptr, NULL, 10);
-	if (ret == FT_LONG_MAX)
-		return (-1);
-	if (ret == FT_LONG_MIN)
-		return (0);
-	return ((int)ret);
+	return (c == ' ' || c == '\t');
 }
