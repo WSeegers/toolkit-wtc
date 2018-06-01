@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_io.h                                             :+:      :+:    :+:   */
+/*   f_skip_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/30 09:35:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/02 01:24:13 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/02 01:21:38 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/02 01:26:01 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef F_IO_H
-# define F_IO_H
+#include "f_io.h"
+#include "f_string.h"
 
-# include <unistd.h>
-# include <stddef.h>
-# include "s_file.h"
+void	f_skip_line(t_file *file)
+{
+	char *delme;
 
-t_file	*f_openf(char *path, char mode);
-ssize_t	f_readf(char *ptr, t_file *file, size_t n);
-ssize_t	f_writef(t_file *file, char *ptr, size_t n);
-ssize_t	f_next_line(char **ptr, t_file *file);
-void	f_skip_line(t_file *file);
-void	f_close(t_file *file);
-
-#endif
+	f_next_line(&delme, file);
+	f_strdel(&delme);
+}

@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/02 00:59:07 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/02 01:23:38 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 INC := -I include
 
 F_IO_SRC = f_feedf.c f_initf.c f_openf.c f_readf.c f_writef.c f_stdio.c\
-		   f_next_line.c
+		   f_next_line.c f_skip_line.c
 F_IO = $(addprefix f_io/, $(F_IO_SRC))
 
 F_MATH_SRC = f_abs.c  f_max.c  f_min.c
