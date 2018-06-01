@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 06:47:34 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 20:33:15 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/01 00:36:18 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_file
 
 # define STDIN_ {NULL, 'r', 0, -2, f_strnew(F_BUFFSIZE), F_BUFFSIZE -1, -1, -2}
 # define STDOUT_ {NULL, 'w', -2, 1, NULL, 0, -1, -2}
-# define STDERR_ {NULL, 'w', -2, 1, NULL, 0, -1, -2}
+# define STDERR_ {NULL, 'w', -2, 2, NULL, 0, -1, -2}
 
 # define STDIN f_stdio(0)
 # define STDOUT f_stdio(1)

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strccpy.c                                       :+:      :+:    :+:   */
+/*   f_strresize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/24 19:18:44 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 20:29:20 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/31 22:08:32 by wseegers          #+#    #+#             */
+/*   Updated: 2018/05/31 23:10:06 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
+#include "f_string.h"
 
-void	*ft_strccpy(char *dest, const char *src, char c)
+char *f_strresize(char **old, size_t n)
 {
-	size_t i;
+	char *new; 
 
-	i = -1;
-	while (*src)
-	{
-		*dest++ = *src++;
-		if (dest[-1] == c)
-			return (dest);
-	}
-	return (NULL);
+	new = f_strnew(n);
+	f_strncpy(new, *old, n);
+	f_strdel(old);
+	*old = new;
+	return (new);
 }

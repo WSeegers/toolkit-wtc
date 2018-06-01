@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 10:58:27 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 16:03:38 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 23:04:14 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	unit_f_initf(void);
 void	unit_f_openf(void);
 void	unit_f_readf(void);
 void	unit_f_writef(void);
+void	unit_f_next_line(void);
 
 #endif

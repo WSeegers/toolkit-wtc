@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/30 10:57:33 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 23:04:48 by wseegers         ###   ########.fr       */
+/*   Created: 2018/04/23 15:08:15 by WSeegers          #+#    #+#             */
+/*   Updated: 2018/05/31 22:12:02 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "test_main.h"
+#include <stddef.h>
 
-int main(void)
+char	*f_strncpy(char *dest, const char *src, size_t n)
 {
-	printf("Tookit test starting..\n\n");
-	unit_f_initf();
-	unit_f_openf();
-	unit_f_readf();
-	unit_f_writef();
-	unit_f_next_line();
-	printf("\n\nTest end..\n");
-	return (0);
+	size_t i;
+
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+		dest[i++] = '\0';
+	return (dest);
 }

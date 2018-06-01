@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 09:35:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 20:26:24 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/05/31 23:06:29 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 t_file	*f_openf(char *path, char mode);
 ssize_t	f_readf(char *ptr, t_file *file, size_t n);
 ssize_t	f_writef(t_file *file, char *ptr, size_t n);
+ssize_t	f_next_line(char **ptr, t_file *file);
 void	f_close(t_file *file);
 
 #endif
