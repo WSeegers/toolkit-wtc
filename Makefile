@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/02 01:23:38 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/02 01:42:16 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ S_LIST_SRC = s_list_append.c s_list_create.c s_list_node_create.c\
 S_LIST = $(addprefix s_list/, $(S_LIST_SRC))
 
 OBJ_LIST = $(patsubst %.c, %.o, $(F_IO) $(F_MATH) $(F_MEMORY) $(F_PRINT)\
-				$(F_STRING) $(F_GRID) $(FLIST))
+				$(F_STRING) $(S_GRID) $(S_LIST))
 BIN_PATH = bin
 BIN = $(addprefix $(BIN_PATH)/, $(OBJ_LIST))
 
