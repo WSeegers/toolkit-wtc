@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_feedf.c                                          :+:      :+:    :+:   */
+/*   test_stdin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/30 08:00:42 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/01 13:36:19 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/01 13:03:58 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/01 13:24:54 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "s_file.h"
-#include "f_memory.h"
+#include "f_io.h"
+#include <stdio.h>
+#include <unistd.h>
+#include "f_io.h"
 #include "f_string.h"
+#include "f_print.h"
+#include "f_memory.h"
 
-ssize_t	f_feedf(t_file *file)
+
+int		main(void)
 {
-	f_bzero(file->buf, file->cap);
-	file->lread = read(file->fd_in, file->buf, file->cap);
-	if (!file->lread)
-		file->lread = f_strlen(file->buf);
-	file->fpos = 0;
-	return (file->lread);
+	char buf[500];
+
+	while (1)
+	{
+		fprintf(stderr, "%ld\n", f_readf(buf, STDIN, 20));
+		f_print_err(buf);
+		f_print_str("8 1\n");
+		f_bzero(buf, 500);
+	}
+
 }
+

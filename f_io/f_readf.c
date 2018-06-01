@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 09:01:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/01 01:14:55 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/01 13:42:53 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,22 @@ ssize_t	f_readf(char *ptr, t_file *file, size_t n)
 {
 	size_t csize;
 	size_t total;
+
 	total = 0;
 	if (!(file->mode == 'r' || file->mode == 'R' || file->mode == 'W'))
 		return (-1);
 	while (n)
 	{
 		if (file->fpos == -1 || file->fpos == file->lread)
-			if (!f_feedf(file))
+		{
+			if (file->fpos > 0 && file->lread < file->cap)
+			{
+				file->fpos = -1;
+				return(total);
+			}
+			else if (!f_feedf(file))
 				return (total);
+		}
 		if (file->lread == -1)
 			return (-1);
 		csize = f_min(n, file->lread - file->fpos);
