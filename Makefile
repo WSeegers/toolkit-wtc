@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/02 01:42:16 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/02 02:22:35 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\
 F_STRING = $(addprefix f_string/, $(F_STRING_SRC))
 
 S_GRID_SRC = s_grid_create.c s_grid_get.c s_grid_init.c s_grid_print.c\
-			  s_grid_search.c
+			  s_grid_search.c s_grid_set.c
 S_GRID = $(addprefix s_grid/, $(S_GRID_SRC))
 
 S_LIST_SRC = s_list_append.c s_list_create.c s_list_node_create.c\
