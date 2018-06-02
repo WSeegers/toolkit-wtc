@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 15:08:20 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/01 01:14:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/02 18:21:52 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,12 @@ t_file	*f_stdio(int std_fd)
 	static t_file	*stdo;
 	static t_file	*stde;
 
-	if (!stdi)
-	{
-		stdi = (t_file*)f_memalloc(sizeof(*stdi));
+	if (!stdi && (stdi = (t_file*)f_memalloc(sizeof(*stdi))))
 		*stdi = (t_file)STDIN_;
-	}
-	if (!stdo)
-	{
-		stdo = (t_file*)f_memalloc(sizeof(*stdi));
+	if (!stdo && (stdo = (t_file*)f_memalloc(sizeof(*stdi))))
 		*stdo = (t_file)STDOUT_;
-	}
-	if (!stde)
-	{
-		stde = (t_file*)f_memalloc(sizeof(*stdi));
+	if (!stde && (stde = (t_file*)f_memalloc(sizeof(*stdi))))
 		*stde = (t_file)STDERR_;
-	}
 	if (std_fd == 0)
 		return (stdi);
 	if (std_fd == 1)

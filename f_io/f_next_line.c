@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 21:30:00 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 23:49:18 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/02 18:10:45 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ssize_t	f_next_line(char **ptr, t_file *file)
 {
 	size_t csize;
 	size_t total;
-	
+
 	if (!(file->mode == 'r' || file->mode == 'R' || file->mode == 'W'))
 		return (-1);
 	total = 0;
