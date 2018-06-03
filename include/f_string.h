@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/02 18:15:24 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/03 22:21:22 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int		f_islower(int c);
 int		f_toupper(int c);
 int		f_isblank(int c);
 int		f_isspace(int c);
+int		f_isdigit(int c);
 
 #endif
