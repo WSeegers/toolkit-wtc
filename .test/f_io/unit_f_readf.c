@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 11:19:47 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 16:00:14 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/03 20:21:42 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
 #include "utest.h"
 #include "f_io.h"
 
 static int	fail_test1(void)
 {
 	t_file *file;
-	char 	buf[20];
+	char 	buf[21];
 	int		ret;
 
 	ret = 0;
@@ -34,9 +35,9 @@ static int	fail_test1(void)
 static	int	read_test_simple(void)
 {
 	t_file *file;
-	char 	buf1[20];
+	char 	buf1[21];
 	int 	fd;
-	char	buf2[20];
+	char	buf2[21];
 	int		ret;
 	
 	ret = 0;
@@ -54,10 +55,10 @@ static	int	read_test_simple(void)
 static	int	read_test_small_file(void)
 {
 	t_file *file;
-	char 	buf1[20];
+	char 	buf1[21];
 	int 	fd;
-	char	buf2[20];
-	int		ret;
+	char	buf2[21];
+	char	ret;
 	int 	read_;
 	
 	ret = 0;
@@ -72,17 +73,15 @@ static	int	read_test_small_file(void)
 			break ;
 		}
 	}
-	close(fd);
-	close(file->fd_in);
 	return (ret);
 }
 
 static	int	read_test_200kb_file(void)
 {
 	t_file *file;
-	char 	buf1[20];
+	char 	buf1[21];
 	int 	fd;
-	char	buf2[20];
+	char	buf2[21];
 	int		ret;
 	
 	ret = 0;
@@ -105,9 +104,9 @@ static	int	read_test_200kb_file(void)
 static	int	read_test_1000kb_file(void)
 {
 	t_file *file;
-	char 	buf1[20];
+	char 	buf1[21];
 	int 	fd;
-	char	buf2[20];
+	char	buf2[21];
 	int		ret;
 	
 	ret = 0;

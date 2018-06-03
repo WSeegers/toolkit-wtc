@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 09:01:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/02 18:31:45 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/03 20:25:12 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ ssize_t		f_readf(char *ptr, t_file *file, size_t n)
 			return (total);
 		if (file->lread == -1)
 			return (-1);
-		csize = f_min(n, file->lread - file->fpos);
+		csize = f_min(n - total, file->lread - file->fpos);
 		f_memcpy(ptr, file->buf + file->fpos, csize);
 		total += csize;
 		ptr += csize;

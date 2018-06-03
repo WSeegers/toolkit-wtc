@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 03:41:36 by wseegers          #+#    #+#              #
-#    Updated: 2018/05/31 23:12:53 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/03 19:53:30 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,11 @@ F_IO_SRC = unit_f_initf.c  unit_f_openf.c  unit_f_readf.c  unit_f_writef.c\
 		    unit_f_next_line.c
 F_IO = $(addprefix f_io/, $(F_IO_SRC))
 
+S_LIST_SRC = unit_s_list_insert.c unit_s_list_rot.c
+S_LIST = $(addprefix s_list/, $(S_LIST_SRC))
+
 OBJ_LIST = $(patsubst %.c, %.o, $(F_IO) $(F_MATH) $(F_MEMORY) $(F_PRINT)\
-				$(F_STRING) $(F_GRID) $(FLIST))
+				$(F_STRING) $(S_GRID) $(S_LIST))
 BIN_PATH = bin
 BIN = $(addprefix $(BIN_PATH)/, $(OBJ_LIST))
 DEP := $(BIN:%.o=%.d)
@@ -48,6 +51,5 @@ fclean : clean
 	make fclean -C lib-utest 
 	make fclean -C ../
 	make fclean -C f_io
-	
 
 re : fclean all 

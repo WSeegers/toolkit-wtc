@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_list_node.h                                      :+:      :+:    :+:   */
+/*   s_list_rot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/02 02:02:10 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/03 19:00:50 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/03 12:52:06 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/03 19:59:31 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef S_LIST_NODE_H
-# define S_LIST_NODE_H
+#include "s_list.h"
 
-typedef struct		s_list_node
+static void		rot_fw(t_list *list)
 {
-	struct s_list_node	*next;
-	struct s_list_node	*prev;
-	void				*data;
-}					t_list_node;
+	void	*first;
 
-t_list_node			*s_list_node_create(t_list_node *prev, t_list_node *next,
-											void *data);
+	first = s_list_pop(list, 0);
+	s_list_append(list, first);
+}
 
-#endif
+static void		rot_bk(t_list *list)
+{
+	void	*last;
+	
+	last = s_list_pop(list, -1);
+	s_list_insert(list, last, 0);
+}
+
+void			s_list_rot(t_list *list, int n)
+{
+	if (n == 0 || list->size < 2)
+		return ;
+	while (n > 0 && n--)
+		rot_fw(list);	
+	while (n++ < 0)
+		rot_bk(list);
+}

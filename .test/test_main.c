@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 10:57:33 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 23:04:48 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/03 19:53:53 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main(void)
 	unit_f_readf();
 	unit_f_writef();
 	unit_f_next_line();
+	unit_s_list_insert();
+	unit_s_list_rot();
 	printf("\n\nTest end..\n");
 	return (0);
 }

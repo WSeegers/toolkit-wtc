@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 02:01:15 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/02 02:01:29 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/03 19:55:39 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ typedef struct		s_list
 void				s_list_init(t_list *list, void (*del_data)(void*));
 t_list				*s_list_create(void (*del_data)(void*));
 void				s_list_append(t_list *list, void *data);
+void				s_list_insert(t_list *list, void *data, int i);
 void				s_list_clear(t_list *list);
 void				*s_list_pop(t_list *list, int index);
+t_list_node			*s_list_getnode(t_list *list, int i);
+void				s_list_rot(t_list *list, int n);
 
 #endif

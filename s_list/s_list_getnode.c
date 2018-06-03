@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_list_node.h                                      :+:      :+:    :+:   */
+/*   s_list_getnode.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/02 02:02:10 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/03 19:00:50 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/03 18:53:20 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/03 19:33:57 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef S_LIST_NODE_H
-# define S_LIST_NODE_H
+#include "s_list.h"
 
-typedef struct		s_list_node
+t_list_node	*s_list_getnode(t_list *list, int i)
 {
-	struct s_list_node	*next;
-	struct s_list_node	*prev;
-	void				*data;
-}					t_list_node;
+	t_list_node *ret;
+	size_t		j;
 
-t_list_node			*s_list_node_create(t_list_node *prev, t_list_node *next,
-											void *data);
-
-#endif
+	if (i < 0)
+		j = list->size + i;
+	else
+		j = i;
+	if (j > list->size)
+		return (NULL);
+	ret = list->head;
+	while (ret->next && i--)
+		ret = ret->next;
+	return (ret);
+}
