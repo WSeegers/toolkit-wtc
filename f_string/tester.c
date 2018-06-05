@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_print.h                                          :+:      :+:    :+:   */
+/*   tester.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 17:41:29 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/04 17:29:42 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/04 17:41:46 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/04 17:46:24 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef F_PRINT_H
-# define F_PRINT_H
 
-# include <unistd.h>
+#include <stdio.h>
 
-ssize_t		f_print_str_fd(int fd, char *str);
-ssize_t		f_print_str(char *str);
-ssize_t		f_print_err(char *str);
+char			**ft_strsplit(char const *s, char c);
 
-void		f_print_nbr_fd(int fd, int nbr);
-void		f_print_nbr(int nbr);
+int main(void)
+{
 
-ssize_t		f_print_char_fd(int fd, char c);
-ssize_t		f_print_char(char c);
+	char **splits;
+	
+	splits =  ft_strsplit("this,is,a,spliting,program\n", ',');
 
-#endif
+	while (*splits)
+		puts(*splits++);
+
+}

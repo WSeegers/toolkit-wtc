@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/03 22:21:22 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/04 18:09:43 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stddef.h>
 
 size_t	f_strlen(const char *str);
+char	*f_strjoin(char const *s1, char const *s2);
+char	*f_strcpy(char *dest, const char *src);
 int		f_strcmp(const char *s1, const char *s2);
 char	*f_strnew(size_t n);
 void	f_strdel(char **as);

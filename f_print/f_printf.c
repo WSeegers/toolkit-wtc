@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   f_printf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 23:58:13 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/04/23 15:12:08 by WSeegers         ###   ########.fr       */
+/*   Created: 2018/06/04 16:52:53 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/04 17:14:03 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdargs.h>
+#include "f_print.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+int f_vprintf(const char *format, va_list ap)
 {
-	size_t i;
+	return (f_vfprintf(STDOUT, format, ap));
+}
 
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+int		f_printf(const char *format, ...)
+{
+	va_list ap;
+	
+	va_start(ap, format);
+	return (f_vprintf(fmt, ap));
 }
