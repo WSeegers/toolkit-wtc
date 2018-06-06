@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/04 18:09:22 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/06 12:19:06 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ F_MATH_SRC = f_abs.c  f_max.c  f_min.c
 F_MATH = $(addprefix f_math/, $(F_MATH_SRC))
 
 F_MEMORY_SRC = f_membzero.c f_memchr.c f_memcpy.c f_memmove.c f_rawmemchr.c\
-			   f_memalloc.c f_memccpy.c f_memcmp.c f_memdel.c f_memset.c
+			   f_memalloc.c f_memccpy.c f_memcmp.c f_memdel.c f_memset.c\
+			   f_ptrdiff.c
 F_MEMORY = $(addprefix f_memory/, $(F_MEMORY_SRC))
 
 F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c
@@ -32,7 +33,8 @@ F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\
 			   f_strnew.c f_strnlen.c f_strccpy.c f_strresize.c f_strncpy.c\
 			   f_strchr.c f_islower.c f_toupper.c f_isspace.c f_isblank.c\
-			   f_atoi.c f_strtol.c f_isdigit.c f_strcpy.c f_strjoin.c
+			   f_atoi.c f_strtol.c f_isdigit.c f_strcpy.c f_strjoin.c\
+			   f_strstr.c f_strncmp.c
 F_STRING = $(addprefix f_string/, $(F_STRING_SRC))
 
 S_GRID_SRC = s_grid_create.c s_grid_get.c s_grid_init.c s_grid_print.c\
@@ -44,8 +46,13 @@ S_LIST_SRC = s_list_append.c s_list_create.c s_list_node_create.c\
 			 s_list_getnode.c s_list_rot.c
 S_LIST = $(addprefix s_list/, $(S_LIST_SRC))
 
+S_DSTR_SRC = capchk_dstr.c cat_dstr.c cat_str.c cut_dstr.c del_dstr.c\
+			 find_dstr.c init_dstr.c isempty_dstr.c len_dstr.c merge_dstr.c\
+			 ncat_dstr.c ncat_str.c new_dstr.c print_dstr.c recap_dstr.c
+S_DSTR =  $(addprefix s_dstring/, $(S_DSTR_SRC))
+
 OBJ_LIST = $(patsubst %.c, %.o, $(F_IO) $(F_MATH) $(F_MEMORY) $(F_PRINT)\
-				$(F_STRING) $(S_GRID) $(S_LIST))
+				$(F_STRING) $(S_GRID) $(S_LIST) $(S_DSTR))
 BIN_PATH = bin
 BIN = $(addprefix $(BIN_PATH)/, $(OBJ_LIST))
 

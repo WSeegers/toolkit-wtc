@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_str.c                                         :+:      :+:    :+:   */
+/*   ncat_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/30 06:58:53 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/30 07:10:29 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/06 11:19:21 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/06 12:15:30 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s_dstr.h"
-#include "f_memory.h"
+#include "f_string.h"
 
-t_dstr	*init_str(size_t capacity)
+void	ncat_str(t_dstr *dstr, char *str, size_t n)
 {
-	t_dstr *dstr;
-
-	dstr = f_memalloc(sizeof(*dstr));
-	capacity = ((capacity + 1) / DSTR_INIT_SIZE) * (DSTR_INIT_SIZE + 1);
-	dstr->str = (char*)f_memalloc(capacity);
-	dstr->cap = capacity;
-	dstr->len = 0;
+	capchk_dstr(dstr, f_strlen(str));
+	f_strncpy(dstr->str + dstr->len, str, n);
+	dstr->len = f_strlen(dstr->str);
 }
