@@ -6,18 +6,18 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 06:47:34 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/01 00:36:18 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/06 18:12:49 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_FILE_H
 # define S_FILE_H
 
-# define F_BUFFSIZE (512)
-
 # include <unistd.h>
 # include <stddef.h>
 # include "f_string.h"
+
+# define F_BUFFSIZE (512)
 
 typedef struct	s_file
 {

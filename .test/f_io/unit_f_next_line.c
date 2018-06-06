@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 21:56:03 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 23:55:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:03:00 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static int	f200kb_test(void)
 	close(fd);
 	return (ret);
 }
+
 void	unit_f_next_line(void)
 {
 	t_unit *unit;

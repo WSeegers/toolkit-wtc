@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 03:41:36 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/03 19:53:30 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/06 20:29:49 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,11 @@ F_IO = $(addprefix f_io/, $(F_IO_SRC))
 S_LIST_SRC = unit_s_list_insert.c unit_s_list_rot.c
 S_LIST = $(addprefix s_list/, $(S_LIST_SRC))
 
+S_DSTR_SRC = unit_new_dstr.c unit_cat_str.c unit_find_dstr.c unit_cut_dstr.c
+S_DSTR = $(addprefix s_dstr/, $(S_DSTR_SRC))
+
 OBJ_LIST = $(patsubst %.c, %.o, $(F_IO) $(F_MATH) $(F_MEMORY) $(F_PRINT)\
-				$(F_STRING) $(S_GRID) $(S_LIST))
+				$(F_STRING) $(S_GRID) $(S_LIST) $(S_DSTR))
 BIN_PATH = bin
 BIN = $(addprefix $(BIN_PATH)/, $(OBJ_LIST))
 DEP := $(BIN:%.o=%.d)
