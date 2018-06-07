@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/06 12:19:06 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/07 03:19:20 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,15 @@ F_MEMORY_SRC = f_membzero.c f_memchr.c f_memcpy.c f_memmove.c f_rawmemchr.c\
 			   f_ptrdiff.c
 F_MEMORY = $(addprefix f_memory/, $(F_MEMORY_SRC))
 
-F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c
+F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c f_vdprintf.c\
+			  f_printf.c get_tag.c parse_tag.c write_till_tag.c init_tag.c
 F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 
 F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\
 			   f_strnew.c f_strnlen.c f_strccpy.c f_strresize.c f_strncpy.c\
 			   f_strchr.c f_islower.c f_toupper.c f_isspace.c f_isblank.c\
 			   f_atoi.c f_strtol.c f_isdigit.c f_strcpy.c f_strjoin.c\
-			   f_strstr.c f_strncmp.c
+			   f_strstr.c f_strncmp.c f_itoa_base.c
 F_STRING = $(addprefix f_string/, $(F_STRING_SRC))
 
 S_GRID_SRC = s_grid_create.c s_grid_get.c s_grid_init.c s_grid_print.c\

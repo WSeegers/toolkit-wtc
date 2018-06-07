@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_abs.c                                            :+:      :+:    :+:   */
+/*   get_tag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:56:33 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 03:28:30 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/06 22:20:55 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/06 23:47:56 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long long f_abs(long long nbr)
+#include "f_string.h"
+
+char	*get_tag(const char *format)
 {
-	if (nbr >= 0)
-		return (nbr);
-	return (-nbr);
+	return (f_strchr(format, '%'));
 }

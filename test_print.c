@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_vfprintf.c                                       :+:      :+:    :+:   */
+/*   test_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/04 17:38:02 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/06 21:40:32 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/07 03:02:45 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdargs.h>
 #include "f_print.h"
 
-
-int		f_vfprintf(int fd, const char format, va_list ap)
+int	main(void)
 {
-	
+	f_printf("tag is here->%-+025.420llX<- tag as there");
 }

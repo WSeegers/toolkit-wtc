@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_abs.c                                            :+:      :+:    :+:   */
+/*   init_tag.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/28 11:56:33 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 03:28:30 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/06 22:17:31 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/06 23:55:09 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long long f_abs(long long nbr)
+#include "include/s_printf_tag.h"
+
+void	init_tag(t_tag *tag)
 {
-	if (nbr >= 0)
-		return (nbr);
-	return (-nbr);
+	tag->spec = 0;
+
+	tag->left_just = false;
+	tag->force_sign = false;
+	tag->space = false;
+	tag->expanded = false;
+	tag->left_pad = false;
+
+	tag->min_len = 1;
+	tag->va_width = false;
+
+	tag->precision = 0;
+	tag->va_prec = false;
+	
+	tag->mem_size = 0;
 }
