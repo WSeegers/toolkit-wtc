@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 03:54:03 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:57:15 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*f_strstr(const char *haystack, const char *needle);
 long	f_strtol(const char *nptr, char **endptr, int base);
 int		f_atoi(const char *nptr);
 char	*f_itoa_base(long long nbr, unsigned int base);
-char	*f_utoa_base(long long unbr, unsigned int base);
+char	*f_utoa_base(unsigned long long unbr, unsigned int base);
 int		f_islower(int c);
 int		f_toupper(int c);
 int		f_isblank(int c);

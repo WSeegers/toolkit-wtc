@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 03:08:39 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 03:54:10 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:56:14 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*f_itoa_base(long long nbr, unsigned int base)
 	int					i;
 	char				buf[66];
 
-	neg = (base > 16) ? 16 : base;
-	size = (nbr < 0) ? 0 : 1;
+	base = (base > 16) ? 16 : base;
+	neg = (nbr < 0) ? 0 : 1;
 	i = 66;
 	unbr = f_abs(nbr);
 	buf[--i] = "0123456789abcdef"[(unbr % base)];
@@ -33,16 +33,15 @@ char	*f_itoa_base(long long nbr, unsigned int base)
 	return (f_strdup(buf + i + neg));
 }
 
-char	*f_utoa_base(long long unbr, unsigned int base)
+char	*f_utoa_base(unsigned long long unbr, unsigned int base)
 {
 	int					i;
 	char				buf[66];
 
 	base = (base > 16) ? 16 : base;
 	i = 66;
-	unbr = f_abs(nbr);
 	buf[--i] = "0123456789abcdef"[(unbr % base)];
 	while (unbr)
 		buf[--i] = "0123456789abcdef"[((unbr /= base) % base)];
-	return (f_strdup(buf + i + size));
+	return (f_strdup(buf + i));
 }

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 04:37:25 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/07 18:08:24 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 int		handle_tag(int fd, const char **format, va_list ap)
 {
 	t_tag *tag;
-	int i;
 	
 	(void)fd;
 	(void)ap;
@@ -47,6 +46,5 @@ int		f_vdprintf(int fd, const char *format, va_list ap)
 		ret += handle_tag(fd, &format, ap);
 		ret += write_till_tag(fd, format);
 	}
-
 	return (ret);
 }
