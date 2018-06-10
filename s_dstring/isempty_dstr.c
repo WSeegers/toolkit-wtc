@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 08:44:11 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/06 09:33:59 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 14:18:38 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 bool	isempty_dstr(t_dstr *dstr)
 {
-	return(dstr->len == 0);
+	return (dstr->len == 0);
 }

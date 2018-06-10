@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 09:38:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 20:30:05 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:32:57 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 int		pf_wstrtostr(char *buf, int *wstr, size_t n)
 {
-	char bufc [5];
-	size_t i;
-	size_t clen;
+	char	bufc[5];
+	size_t	i;
+	size_t	clen;
 
 	i = 0;
 	while (*wstr)

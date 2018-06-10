@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:11:58 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/04 17:22:16 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:21:36 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		f_vfprintf(t_file file, const char *format, va_list ap)
 int		f_fprintf(t_file file, const char *format, ...)
 {
 	va_list ap;
-	
+
 	va_start(ap, format);
 	return (f_vfprintf(file, fmt, ap));
 }

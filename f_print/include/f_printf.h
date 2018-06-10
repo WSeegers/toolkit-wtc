@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:06:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 11:30:23 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:23:52 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 # define PF_BUFFSIZE 512
 
-int	pf_nbrtostr(long long nbr, char *str, unsigned int base, 
+int	pf_nbrtostr(long long nbr, char *str, unsigned int base,
 													unsigned int min_width);
-int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base, 
+int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base,
 													unsigned int min_width);
 int	pf_ftostr(long double nbr, char *str, unsigned int precision);
 int	pf_wstrtostr(char *buf, int *wstr, size_t n);

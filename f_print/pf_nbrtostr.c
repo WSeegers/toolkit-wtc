@@ -6,13 +6,13 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 19:39:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 23:29:36 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:37:39 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "f_memory.h"
 
-int	pf_nbrtostr(long long nbr, char *str, unsigned int base, 
+int	pf_nbrtostr(long long nbr, char *str, unsigned int base,
 														unsigned int min_width)
 {
 	unsigned int		i;
@@ -29,13 +29,13 @@ int	pf_nbrtostr(long long nbr, char *str, unsigned int base,
 	}
 	while (++i < min_width)
 		str[i] = '0';
-	(neg && i && nbr) ? str[i++] = '-': 0;
+	(neg && i && nbr) ? str[i++] = '-' : 0;
 	f_memrev(str, i);
 	str[i] = '\0';
 	return (i);
 }
 
-int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base, 
+int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base,
 														unsigned int min_width)
 {
 	unsigned int		i;

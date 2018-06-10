@@ -6,11 +6,11 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:56:33 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 03:28:30 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:18:00 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long long f_abs(long long nbr)
+long long	f_abs(long long nbr)
 {
 	if (nbr >= 0)
 		return (nbr);

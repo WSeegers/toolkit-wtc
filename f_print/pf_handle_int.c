@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 20:35:10 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 11:23:26 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:32:15 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void					hextoupper(char *c)
 	*c = f_toupper(*c);
 }
 
-static unsigned long long 	get_size_mask(size_t n, long long nbr, bool has_sign)
+static unsigned long long	get_size_mask(size_t n, long long nbr,
+																bool has_sign)
 {
 	if (has_sign)
 	{
@@ -42,7 +43,6 @@ static unsigned long long 	get_size_mask(size_t n, long long nbr, bool has_sign)
 	if (!n || n == 4)
 		return ((unsigned int)nbr);
 	return ((unsigned long long)nbr);
-		
 }
 
 static void					add_prefix(char *buf, t_tag *tag)
@@ -57,8 +57,8 @@ static void					add_prefix(char *buf, t_tag *tag)
 		f_memmove(buf + 1, buf, f_strlen(buf) + 1);
 		*buf = '0';
 	}
-	else if (f_strchr("dDi", tag->spec) 
-								&& *buf != '-' && (tag->space || tag->force_sign))
+	else if (f_strchr("dDi", tag->spec)
+							&& *buf != '-' && (tag->space || tag->force_sign))
 	{
 		f_memmove(buf + 1, buf, f_strlen(buf) + 1);
 		if (tag->force_sign)
@@ -68,12 +68,12 @@ static void					add_prefix(char *buf, t_tag *tag)
 	}
 }
 
-int							pf_handle_int(char *buf, t_tag *tag, 
+int							pf_handle_int(char *buf, t_tag *tag,
 														va_list ap, size_t n)
 {
 	long long			nbr;
 	unsigned int		base;
-	
+
 	tag->mem_size = f_strchr("DOU", tag->spec) ? sizeof(long) : tag->mem_size;
 	base = 10;
 	if (f_toupper(tag->spec) == 'X' || tag->spec == 'p')

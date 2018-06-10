@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 22:00:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 21:15:23 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:38:01 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int		pf_handle_str(char *buf, t_tag *tag, va_list ap, size_t n)
 {
 	s_tag_get_width(tag, ap);
 	s_tag_get_prec(tag, ap);
-	
 	if (tag->spec == 'S' || (tag->spec == 's' && tag->mem_size >= sizeof(int)))
 		pf_wstrtostr(buf, va_arg(ap, int*), n);
-	else if	(tag->spec == 'C' || 
+	else if (tag->spec == 'C' ||
 							(tag->spec == 'c' && tag->mem_size >= sizeof(int)))
 		pf_wctostr(buf, va_arg(ap, int));
 	else if (tag->spec == 's')

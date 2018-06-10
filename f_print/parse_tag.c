@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 22:12:42 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:36:27 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,11 @@ static const char	*get_width_prec(t_tag *tag, const char *format)
 			while (f_isdigit(*format))
 				format++;
 		}
-		else 
+		else
 			tag->precision = 0;
 	}
 	return (format);
 }
-
 
 static const char	*get_mem_size(t_tag *tag, const char *format)
 {
@@ -91,41 +90,14 @@ static const char	*get_mem_size(t_tag *tag, const char *format)
 	return (format);
 }
 
-static const char *get_spec(t_tag *tag, const char *format)
+static const char	*get_spec(t_tag *tag, const char *format)
 {
 	if (f_strchr(SPECS, *format))
 		tag->spec = *format++;
 	return (format);
 }
 
-/*static void	print_tag(t_tag *tag)
-{
-	f_print_str("left_just: ");
-	f_print_nbr(tag->left_just);
-	f_print_str("\nforce_sign: ");
-	f_print_nbr(tag->force_sign);
-	f_print_str("\nspace: ");
-	f_print_nbr(tag->space);
-	f_print_str("\nexpanded: ");
-	f_print_nbr(tag->expanded);
-	f_print_str("\nleft_pad: ");
-	f_print_nbr(tag->pad);
-	f_print_str("\nmin_len: ");
-	f_print_nbr(tag->min_len);
-	f_print_str("\nva_width: ");
-	f_print_nbr(tag->va_width);
-	f_print_str("\nprecision: ");
-	f_print_nbr(tag->precision);
-	f_print_str("\nva_prec: ");
-	f_print_nbr(tag->va_prec);
-	f_print_str("\nmem_size: ");
-	f_print_nbr(tag->mem_size);
-	f_print_str("\nspec: ");
-	write(1, &(tag->spec), 1);
-	f_print_str("\n");
-}*/
-
-t_tag	*parse_tag(const char *format)
+t_tag				*parse_tag(const char *format)
 {
 	t_tag *tag;
 
@@ -136,6 +108,5 @@ t_tag	*parse_tag(const char *format)
 	format = get_mem_size(tag, format);
 	format = get_spec(tag, format);
 	tag->format = format;
-	//print_tag(tag);
 	return (tag);
 }

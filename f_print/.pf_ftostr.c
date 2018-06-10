@@ -6,13 +6,13 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:36:07 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/08 21:51:26 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 14:28:02 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "include/f_printf.h"
 #include "f_memory.h"
-#include <limits.h>
 
 static unsigned int	pow10(exp)
 {

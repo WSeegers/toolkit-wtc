@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 11:30:25 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:29:38 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@
 #include "f_memory.h"
 #include "s_dstr.h"
 
+/*
+** These are cases that still need to be implimented
+**
+** else if (f_strchr(FLT_SPEC, tag->spec))
+** 	pf_handle_float();
+** else if (f_strchr(OTH_SPEC, tag->spec))
+** 	pf_handle_other();
+*/
 
-static int handle_tag(int fd, const char **format, va_list ap)
+static int		handle_tag(int fd, const char **format, va_list ap)
 {
 	t_tag	*tag;
 	char	buf[PF_BUFFSIZE];
-	
+
 	tag = parse_tag(*format);
 	if (tag->spec)
 	{
@@ -33,10 +41,6 @@ static int handle_tag(int fd, const char **format, va_list ap)
 			pf_handle_str(buf, tag, ap, sizeof(buf) - 1);
 		else if (f_strchr(INT_SPEC, tag->spec))
 			pf_handle_int(buf, tag, ap, sizeof(buf) - 1);
-	//	else if (f_strchr(FLT_SPEC, tag->spec))
-	//		pf_handle_float();
-	//	else if (f_strchr(OTH_SPEC, tag->spec))
-	//		pf_handle_other();
 	}
 	f_memdel((void**)&tag);
 	return (f_print_str_fd(fd, buf));

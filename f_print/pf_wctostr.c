@@ -6,14 +6,14 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 09:27:23 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 20:29:45 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:20:59 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		pf_wctostr(char *buf, int c)
 {
 	int i;
-	
+
 	i = 0;
 	if (c <= 0x7f)
 		buf[i++] = c & 0x7f;
