@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 11:57:15 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/10 11:19:01 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ long	f_strtol(const char *nptr, char **endptr, int base);
 int		f_atoi(const char *nptr);
 char	*f_itoa_base(long long nbr, unsigned int base);
 char	*f_utoa_base(unsigned long long unbr, unsigned int base);
+void	f_striter(char *s, void (*f)(char *));
 int		f_islower(int c);
 int		f_toupper(int c);
 int		f_isblank(int c);

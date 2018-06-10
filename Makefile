@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/07 03:19:20 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/10 11:32:38 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,18 +24,21 @@ F_MATH = $(addprefix f_math/, $(F_MATH_SRC))
 
 F_MEMORY_SRC = f_membzero.c f_memchr.c f_memcpy.c f_memmove.c f_rawmemchr.c\
 			   f_memalloc.c f_memccpy.c f_memcmp.c f_memdel.c f_memset.c\
-			   f_ptrdiff.c
+			   f_ptrdiff.c f_memrev.c
 F_MEMORY = $(addprefix f_memory/, $(F_MEMORY_SRC))
 
-F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c f_vdprintf.c\
-			  f_printf.c get_tag.c parse_tag.c write_till_tag.c init_tag.c
+F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c pf_handle_str.c\
+			  f_printf.c get_tag.c parse_tag.c init_tag.c\
+			  pf_nbrtostr.c pf_ftostr.c pf_wctostr.c pf_wstrtostr.c\
+			  s_tag_get_width.c s_tag_get_prec.c pf_padding.c f_vdprintf.c\
+			  pf_handle_int.c
 F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 
 F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\
 			   f_strnew.c f_strnlen.c f_strccpy.c f_strresize.c f_strncpy.c\
 			   f_strchr.c f_islower.c f_toupper.c f_isspace.c f_isblank.c\
 			   f_atoi.c f_strtol.c f_isdigit.c f_strcpy.c f_strjoin.c\
-			   f_strstr.c f_strncmp.c f_itoa_base.c
+			   f_strstr.c f_strncmp.c f_itoa_base.c f_striter.c
 F_STRING = $(addprefix f_string/, $(F_STRING_SRC))
 
 S_GRID_SRC = s_grid_create.c s_grid_get.c s_grid_init.c s_grid_print.c\

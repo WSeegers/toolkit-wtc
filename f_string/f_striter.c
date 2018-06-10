@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_tag.c                                         :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/06 22:17:31 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 22:14:00 by wseegers         ###   ########.fr       */
+/*   Created: 2018/04/25 21:21:06 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/10 11:18:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/s_printf_tag.h"
-
-void	init_tag(t_tag *tag)
+void	f_striter(char *s, void (*f)(char *))
 {
-	tag->spec = 0;
-
-	tag->left_just = false;
-	tag->force_sign = false;
-	tag->space = false;
-	tag->prefix = false;
-	tag->zeropad = false;
-
-	tag->min_width = 0;
-	tag->va_width = false;
-
-	tag->precision = 0;
-	tag->va_prec = false;
-	
-	tag->mem_size = 0;
+	if (s && f)
+		while (*s)
+			f(s++);
 }

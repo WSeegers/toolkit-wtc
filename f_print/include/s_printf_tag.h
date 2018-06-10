@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 20:56:38 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 04:34:13 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/09 22:11:38 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,10 @@
 
 # include <stdbool.h>
 # include <stddef.h>
-
-# define SIZE_NONE 0
-# define SIZE_CHAR 1
-# define SIZE_SHORT 2
-# define SIZE_LONG 3
-# define SIZE_LLONG 4
-# define SIZE_IMAX 5
-# define SIZE_T 6
+# include <stdarg.h>
 
 # define SPECS "sSpdDioOuUxXcCeEfFgGaAn"
-# define NBR_SPEC "pdDioOuUxX"
+# define INT_SPEC "pdDioOuUxX"
 # define STR_SPEC "sScC"
 # define FLT_SPEC "eEfFgGaA"
 # define OTH_SPEC "n%"
@@ -37,16 +30,17 @@ typedef struct	s_tag
 	bool		left_just;
 	bool		force_sign;
 	bool		space;
-	bool		expanded;
-	bool		pad;
+	bool		prefix;
+	bool		zeropad;
+	bool		sep;
 
-	size_t		min_len;
+	size_t		min_width;
 	bool		va_width;
 
 	size_t		precision;
 	bool		va_prec;
 	
-	int			mem_size;
+	size_t		mem_size;
 	
 	const char 	*format;
 }				t_tag;
@@ -54,7 +48,8 @@ typedef struct	s_tag
 void	init_tag(t_tag *tag);
 char	*get_tag(const char *format);
 t_tag	*parse_tag(const char *format);
-size_t	write_till_tag(int fd, const char *format);
 char	*get_tag(const char *format);
+int		s_tag_get_prec(t_tag *tag, va_list ap);
+int		s_tag_get_width(t_tag *tag, va_list ap);
 
 #endif

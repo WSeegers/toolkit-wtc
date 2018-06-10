@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_tag.c                                         :+:      :+:    :+:   */
+/*   f_memrev.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/06 22:17:31 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 22:14:00 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/07 19:53:16 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/07 20:01:26 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/s_printf_tag.h"
+#include <stddef.h>
 
-void	init_tag(t_tag *tag)
+void	f_memrev(void *mem, size_t size)
 {
-	tag->spec = 0;
+	size_t			i;
+	unsigned char	temp;
+	unsigned char	*m;
 
-	tag->left_just = false;
-	tag->force_sign = false;
-	tag->space = false;
-	tag->prefix = false;
-	tag->zeropad = false;
-
-	tag->min_width = 0;
-	tag->va_width = false;
-
-	tag->precision = 0;
-	tag->va_prec = false;
-	
-	tag->mem_size = 0;
+	i = -1;
+	m = (unsigned char*)mem;
+	while (--size > ++i)
+	{
+		temp = m[size];
+		m[size] = m[i];
+		m[i] = temp;
+	}
 }

@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   s_tag_get_width.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/25 21:21:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/24 15:27:53 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/09 10:36:51 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/09 11:09:58 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striter(char *s, void (*f)(char *))
+#include <stdarg.h>
+#include "include/s_printf_tag.h"
+
+int		s_tag_get_width(t_tag *tag, va_list ap)
 {
-	if (s && f)
-		while (*s)
-			f(s++);
+	if (tag->va_width)
+		tag->min_width = va_arg(ap, size_t);
+	return (0);
 }

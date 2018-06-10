@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_tag.c                                         :+:      :+:    :+:   */
+/*   s_tag_get_prec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/06 22:17:31 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/09 22:14:00 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/09 10:46:32 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/09 11:36:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdarg.h>
 #include "include/s_printf_tag.h"
 
-void	init_tag(t_tag *tag)
+int		s_tag_get_prec(t_tag *tag, va_list ap)
 {
-	tag->spec = 0;
-
-	tag->left_just = false;
-	tag->force_sign = false;
-	tag->space = false;
-	tag->prefix = false;
-	tag->zeropad = false;
-
-	tag->min_width = 0;
-	tag->va_width = false;
-
-	tag->precision = 0;
-	tag->va_prec = false;
-	
-	tag->mem_size = 0;
+	if (tag->va_prec)
+		tag->precision = va_arg(ap, size_t);
+	return (0);
 }
