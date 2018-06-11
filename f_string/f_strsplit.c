@@ -6,11 +6,12 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 23:21:52 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/11 12:07:58 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/11 12:12:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "f_string.h"
+#include "f_memory.h"
 
 static size_t	count_splits(char const *s, char c)
 {
