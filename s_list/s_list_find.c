@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   s_list_find.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/11 08:06:30 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/11 08:27:19 by wseegers         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "s_list.h"
+
+int	s_list_find(t_list *list, void *data)
+{
+	t_list_node *next;
+	int			index;
+
+	index = 0;
+	next = list->head;
+	while (next)
+	{
+		if (next->data == data)
+			return (index);
+		next = next->next;
+		index++;
+	}
+	return (-1);
+}

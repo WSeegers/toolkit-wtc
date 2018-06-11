@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 02:01:15 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/03 19:55:39 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/11 08:25:31 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void				s_list_clear(t_list *list);
 void				*s_list_pop(t_list *list, int index);
 t_list_node			*s_list_getnode(t_list *list, int i);
 void				s_list_rot(t_list *list, int n);
+void				*s_list_get(t_list *list, int index);
+int					s_list_find(t_list *list, void *data);
 
 #endif
