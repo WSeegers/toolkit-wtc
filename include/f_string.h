@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/11 12:07:55 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/11 22:08:13 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*f_itoa_base(long long nbr, unsigned int base);
 char	*f_utoa_base(unsigned long long unbr, unsigned int base);
 void	f_striter(char *s, void (*f)(char *));
 char	**f_strsplit(char const *s, char c);
+void	f_strarrdel(char ***array);
 int		f_islower(int c);
 int		f_toupper(int c);
 int		f_isblank(int c);
