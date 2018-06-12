@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_strarrdel.c                                      :+:      :+:    :+:   */
+/*   s_vert_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/11 21:56:34 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/12 09:53:27 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/12 06:08:56 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/12 06:12:50 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "s_list.h"
+#include "include/s_vertex.h"
 
-void	f_strarrdel(char **array)
+t_vert	*s_vert_get(t_list *vert_list, int index)
 {
-	int i;
-
-	if (!array)
-		return ;
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
+	return ((t_vert*)s_list_get(vert_list, index));
 }

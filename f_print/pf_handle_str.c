@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 22:00:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/11 22:23:08 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/12 03:59:12 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ int		pf_handle_str(char *buf, t_tag *tag, va_list ap, size_t n)
 	else if (tag->spec == 's')
 	{
 		if (!(str = va_arg(ap, char*)))
-		{
 			str = "(null)";
-		}
-		f_strncpy(buf, va_arg(ap, char*), n);
+		f_strncpy(buf, str, n);
 	}
 	else if (tag->spec == 'c')
 	{

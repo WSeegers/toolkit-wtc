@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_strarrdel.c                                      :+:      :+:    :+:   */
+/*   s_vert_by_name.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/11 21:56:34 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/12 09:53:27 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/12 04:48:08 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/12 05:31:57 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdbool.h>
+#include "include/s_vertex.h"
+#include "include/s_graph.h"
+#include "s_list.h"
+#include "f_string.h"
 
-void	f_strarrdel(char **array)
+static bool	list_name_chk(void *vertex, void *name)
 {
-	int i;
+	if (!f_strcmp(((t_vert*)vertex)->name, (char*)name))
+		return (true);
+	return (false);
+}
 
-	if (!array)
-		return ;
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
+t_vert		*s_vert_by_name(t_graph *graph, char *name)
+{
+	return (s_list_func_find(graph->vert_list, list_name_chk, name));
 }

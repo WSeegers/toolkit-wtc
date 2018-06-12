@@ -6,11 +6,12 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 19:39:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 13:37:39 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/12 05:59:37 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "f_memory.h"
+#include "f_string.h"
 
 int	pf_nbrtostr(long long nbr, char *str, unsigned int base,
 														unsigned int min_width)
@@ -19,6 +20,11 @@ int	pf_nbrtostr(long long nbr, char *str, unsigned int base,
 	unsigned long long	unbr;
 	int					neg;
 
+	if (!nbr)
+	{
+		f_strcpy(str, "0");
+		return (1);
+	}
 	neg = (nbr < 0) ? 1 : 0;
 	unbr = (neg) ? -nbr : nbr;
 	i = -1;
@@ -40,6 +46,11 @@ int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base,
 {
 	unsigned int		i;
 
+	if (!unbr)
+	{
+		f_strcpy(str, "0");
+		return (1);
+	}
 	i = -1;
 	while (unbr)
 	{
