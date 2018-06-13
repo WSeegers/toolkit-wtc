@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 04:48:08 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/12 05:31:57 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/13 11:47:45 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ static bool	list_name_chk(void *vertex, void *name)
 
 t_vert		*s_vert_by_name(t_graph *graph, char *name)
 {
-	return (s_list_func_find(graph->vert_list, list_name_chk, name));
+	return (s_list_func_find(graph, list_name_chk, name));
 }

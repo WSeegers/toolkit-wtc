@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/03 13:02:13 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/03 19:39:28 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/13 12:11:10 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	s_list_insert(t_list *list, void *data, int i)
 	else
 		list->head = new;
 	node->prev = new;
+	list->size++;
 }

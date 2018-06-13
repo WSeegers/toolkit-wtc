@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/13 07:32:00 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/13 15:14:06 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,9 @@ S_DSTR =  $(addprefix s_dstring/, $(S_DSTR_SRC))
 
 S_GRAPH_SRC = s_graph_add_vert.c s_graph_create.c s_vert_add_adj.c\
 			  s_vert_create.c s_vert_by_name.c s_vert_get.c\
-			  s_vert_has_edge.c s_vert_cost.c dijkstra.c
+			  s_vert_has_edge.c s_vert_cost.c dijkstra.c s_vert_set_cost.c\
+			  s_vert_reset_path.c s_graph_reset_path.c s_graph_equ.c\
+			  s_graph_print_verts.c
 S_GRAPH =  $(addprefix s_graph/, $(S_GRAPH_SRC))
 
 OBJ_LIST = $(patsubst %.c, %.o, $(F_IO) $(F_MATH) $(F_MEMORY) $(F_PRINT)\

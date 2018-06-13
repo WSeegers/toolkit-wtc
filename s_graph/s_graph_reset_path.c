@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_graph_add_vert.c                                 :+:      :+:    :+:   */
+/*   s_graph_reset_path.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/11 08:38:51 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/13 11:46:43 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/13 12:20:24 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/13 12:24:14 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/s_graph.h"
 
-void			s_graph_add_vert(t_graph *graph, t_vert *vert)
+void	s_graph_reset_path(t_graph *graph)
 {
-	s_list_append(graph, vert);
+	size_t	i;
+
+	i = -1;
+	while (++i < graph->size)
+		s_vert_reset_path(s_vert_get(graph, i));
 }
