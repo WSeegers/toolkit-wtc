@@ -6,10 +6,11 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 07:31:30 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/11 08:53:13 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/13 08:51:21 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "include/s_vertex.h"
 #include "f_memory.h"
 #include "f_string.h"
@@ -22,8 +23,11 @@ static void del_vert(void *vert)
 void	s_vert_init(t_vert *vert)
 {
 	vert->name = NULL;
-	vert->adj_list = s_list_create(del_vert);
-	vert->cost = s_list_create(NULL);
+	vert->edges = s_list_create(del_vert);
+	vert->edge_cost = s_list_create(NULL);
+	vert->path_cost = INT_MAX;
+	vert->parent = NULL;
+	vert->visited = false;
 }
 
 t_vert	*s_vert_create(char *name)

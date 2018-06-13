@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_list_find.c                                      :+:      :+:    :+:   */
+/*   s_vert_cost.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/11 08:06:30 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/13 08:39:48 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/13 07:04:47 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/13 10:36:19 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "s_list.h"
+#include <limits.h>
+#include "s_vertex.h"
 
-int	s_list_find(t_list *list, void *data)
+long	s_vert_cost(t_vert *from, t_vert *to)
 {
-	t_list_node *next;
-	int			index;
+	int	index;
 
-	index = 0;
-	next = list->head;
-	while (next)
-	{
-		if (next->data == data)
-			return (index);
-		next = next->next;
-		index++;
-	}
-	return (-1);
+	index = s_list_find(from->edges, to);
+	if (index >= 0)
+		return (*(long*)s_list_get(from->edge_cost, index));
+	else
+		return (LONG_MAX);
 }

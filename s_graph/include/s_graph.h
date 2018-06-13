@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 07:22:48 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/12 10:09:36 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/13 07:38:08 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ t_graph			*s_graph_create(void);
 void			s_graph_init(t_graph *graph);
 void			s_graph_add_vert(t_graph *graph, t_vert *vert);
 t_vert			*s_vert_by_name(t_graph *graph, char *name);
+t_vert			*dijkstra(t_vert *start, t_vert *target);
 
 #endif
