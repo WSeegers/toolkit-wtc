@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 05:02:15 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/13 15:13:43 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/15 04:57:35 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ void	s_path_visit(t_list *p_list, t_vert *target)
 	size_t	visits;
 
 	current = (t_vert*)s_list_pop(p_list, 0);
+	//f_printf("visiting-> %s, %d\n", current->name, current->path_cost);
 	current->visited = true;
 	visits = -1;
-	if (current == target)
+	if (current == target || current->path_cost > target->path_cost)
 		return ;
 	while (++visits < current->edges->size)
 	{
-		if (!(nbour = s_vert_get(current->edges, visits))->visited)
+		nbour = s_vert_get(current->edges, visits);
+		if (!nbour->visited && nbour != target && (s_list_find(p_list, nbour) == -1))
 			s_list_append(p_list, nbour);
 		if (nbour->path_cost > 
 				(edge_cost = s_vert_cost(current, nbour) + current->path_cost))
@@ -48,6 +50,8 @@ void	s_path_visit(t_list *p_list, t_vert *target)
 		}
 	}
 	s_list_mergesort(p_list, path_cost_cmp);
+	//if (target->parent)
+		//f_printf("dyk: %d, %s\n", target->path_cost, target->parent->name);
 }
 
 
@@ -60,7 +64,7 @@ t_graph		*dijkstra(t_vert *start, t_vert *target)
 	s_path = s_list_create(NULL);
 	s_list_append(p_list, start);
 	start->path_cost = 0;
-	while (!target->visited && p_list->size)
+	while (p_list->size)
 		s_path_visit(p_list, target);
 	if (target->parent)
 		while (target)
@@ -68,5 +72,7 @@ t_graph		*dijkstra(t_vert *start, t_vert *target)
 			s_list_insert(s_path, target, 0);
 			target = target->parent;
 		}
+	s_list_clear(p_list);
+	f_memdel((void**)&p_list);
 	return (s_path);
 }
