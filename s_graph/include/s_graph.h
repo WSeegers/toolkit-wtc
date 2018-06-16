@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 07:22:48 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/13 13:46:58 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/16 10:07:00 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "s_list.h"
 # include "s_vertex.h"
 
-typedef t_list t_graph;
+typedef t_list	t_graph;
 
 t_graph			*s_graph_create(void);
 void			s_graph_add_vert(t_graph *graph, t_vert *vert);

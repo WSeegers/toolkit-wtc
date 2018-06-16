@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 13:25:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/13 15:13:54 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/16 10:07:42 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ bool	s_graph_equ(t_graph *g1, t_graph *g2)
 	}
 	return (true);
 }
-

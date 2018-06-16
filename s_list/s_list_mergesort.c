@@ -6,14 +6,14 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 10:48:45 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/12 13:13:24 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/16 10:29:11 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s_list.h"
 #include "f_print.h"
 
-static void	split_list(t_list *list, t_list *listA, t_list *listB)
+static void	split_list(t_list *list, t_list *list_a, t_list *list_b)
 {
 	int		i;
 	void	*data;
@@ -23,60 +23,54 @@ static void	split_list(t_list *list, t_list *listA, t_list *listB)
 	{
 		if (i)
 		{
-			s_list_append(listA, data);
+			s_list_append(list_a, data);
 			i = 0;
 		}
 		else
 		{
-			s_list_append(listB, data);
+			s_list_append(list_b, data);
 			i = 1;
 		}
 	}
 }
 
-static void merge_lists(t_list *sorted, t_list *listA, t_list *listB,
+static void	merge_lists(t_list *sorted, t_list *list_a, t_list *list_b,
 												int (*f_data_cmp)(void*, void*))
 {
-	void *dataA;
-	void *dataB;
-	
-	dataA = s_list_pop(listA, 0);
-	dataB = s_list_pop(listB, 0);
-	while (dataA && dataB)
+	void *data_a;
+	void *data_b;
+
+	data_a = s_list_pop(list_a, 0);
+	data_b = s_list_pop(list_b, 0);
+	while (data_a && data_b)
 	{
-		if (f_data_cmp(dataA, dataB) < 0)
+		if (f_data_cmp(data_a, data_b) < 0)
 		{
-			s_list_append(sorted, dataB);
-			dataB = s_list_pop(listB, 0);
+			s_list_append(sorted, data_b);
+			data_b = s_list_pop(list_b, 0);
 			continue ;
 		}
-		s_list_append(sorted, dataA);
-		dataA = s_list_pop(listA, 0);
+		s_list_append(sorted, data_a);
+		data_a = s_list_pop(list_a, 0);
 	}
-	while (dataA)
-	{
-		s_list_append(sorted, dataA);
-		dataA = s_list_pop(listA, 0);
-	}
-	while (dataB)
-	{
-		s_list_append(sorted, dataB);
-		dataB = s_list_pop(listB, 0);
-	}
+	while (s_list_append(sorted, data_a))
+		data_a = s_list_pop(list_a, 0);
+	while (s_list_append(sorted, data_b))
+		data_b = s_list_pop(list_b, 0);
 }
 
 void		s_list_mergesort(t_list *list, int (*f_data_cmp)(void*, void*))
 {
-	t_list *listA;
-	t_list *listB;
+	t_list *list_a;
+	t_list *list_b;
 	
 	if (list && list->size > 1)
 	{
-		listA = s_list_create(NULL);
-		listB = s_list_create(NULL);
-		split_list(list, listA, listB);
-		s_list_mergesort(listA, f_data_cmp);
-		s_list_mergesort(listB, f_data_cmp);
-		merge_lists(list, listA, listB, f_data_cmp);
+		list_a = s_list_create(NULL);
+		list_b = s_list_create(NULL);
+		split_list(list, list_a, list_b);
+		s_list_mergesort(list_a, f_data_cmp);
+		s_list_mergesort(list_b, f_data_cmp);
+		merge_lists(list, list_a, list_b, f_data_cmp);
 	}
 }

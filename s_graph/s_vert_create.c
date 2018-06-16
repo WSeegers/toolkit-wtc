@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 07:31:30 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/13 08:51:21 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/16 10:12:13 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include "f_memory.h"
 #include "f_string.h"
 
-static void del_vert(void *vert)
+static void	del_vert(void *vert)
 {
 	f_memdel(&vert);
 }
 
-void	s_vert_init(t_vert *vert)
+void		s_vert_init(t_vert *vert)
 {
 	vert->name = NULL;
 	vert->edges = s_list_create(del_vert);
@@ -30,7 +30,7 @@ void	s_vert_init(t_vert *vert)
 	vert->visited = false;
 }
 
-t_vert	*s_vert_create(char *name)
+t_vert		*s_vert_create(char *name)
 {
 	t_vert *vert;
 
