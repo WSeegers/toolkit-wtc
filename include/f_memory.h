@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 16:49:07 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/07 19:58:21 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/17 23:03:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	*f_memset(void *s, int c, size_t n);
 void	*f_rawmemchr(const void *s, int c);
 long	*f_ptrdiff(void *start, void *end);
 void	f_memrev(void *mem, size_t size);
+void	f_swapptr(void *p1, void *p2);
 
 #endif

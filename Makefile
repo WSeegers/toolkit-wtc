@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/13 15:14:06 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/17 23:04:16 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ F_MATH = $(addprefix f_math/, $(F_MATH_SRC))
 
 F_MEMORY_SRC = f_membzero.c f_memchr.c f_memcpy.c f_memmove.c f_rawmemchr.c\
 			   f_memalloc.c f_memccpy.c f_memcmp.c f_memdel.c f_memset.c\
-			   f_ptrdiff.c f_memrev.c
+			   f_ptrdiff.c f_memrev.c f_swapptr.c
 F_MEMORY = $(addprefix f_memory/, $(F_MEMORY_SRC))
 
 F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c pf_handle_str.c\
