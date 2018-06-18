@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 10:48:45 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/16 10:29:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/18 12:51:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		s_list_mergesort(t_list *list, int (*f_data_cmp)(void*, void*))
 {
 	t_list *list_a;
 	t_list *list_b;
-	
+
 	if (list && list->size > 1)
 	{
 		list_a = s_list_create(NULL);

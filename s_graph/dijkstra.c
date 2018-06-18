@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 05:02:15 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/16 10:10:43 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/18 12:51:23 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "s_vertex.h"
 #include "f_memory.h"
 
-int		path_cost_cmp(void *vert1, void *vert2)
+int			path_cost_cmp(void *vert1, void *vert2)
 {
 	if (((t_vert*)vert1)->path_cost < ((t_vert*)vert2)->path_cost)
 		return (1);
@@ -23,7 +23,7 @@ int		path_cost_cmp(void *vert1, void *vert2)
 	return (0);
 }
 
-void	s_path_visit(t_list *p_list, t_vert *target)
+void		s_path_visit(t_list *p_list, t_vert *target)
 {
 	t_vert	*current;
 	t_vert	*nbour;
