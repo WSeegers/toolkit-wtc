@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_memalloc.c                                       :+:      :+:    :+:   */
+/*   f_memlist.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/22 15:59:57 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/06/24 08:43:06 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/24 08:30:51 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/24 08:39:57 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "f_memory.h"
 #include "s_list.h"
-#include "f_cntl.h"
 
-void	*f_memalloc(size_t size)
+static void	freemem(void *ptr)
 {
-	void	*ptr;
+	f_memdel(&ptr);
+}
 
-	if (!(ptr = malloc(size)))
-		return (NULL);
-	f_bzero(ptr, size);
-	s_list_append(f_memlist(), ptr);
-	return (ptr);
+t_list	*f_memlist(void)
+{
+	static t_list	*memlist;
+
+	if (!memlist)
+		memlist = s_list_create(freemem);
+	return (memlist);
 }

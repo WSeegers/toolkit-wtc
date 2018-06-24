@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_memalloc.c                                       :+:      :+:    :+:   */
+/*   f_cntl.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/22 15:59:57 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/06/24 08:43:06 by wseegers         ###   ########.fr       */
+/*   Created: 2018/06/24 08:46:07 by wseegers          #+#    #+#             */
+/*   Updated: 2018/06/24 08:52:39 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "f_memory.h"
-#include "s_list.h"
-#include "f_cntl.h"
+#ifndef F_CNTL_H
+# define F_CNTL_H
 
-void	*f_memalloc(size_t size)
-{
-	void	*ptr;
+void	f_exit(int code);
+void	f_eexit(int code, char *s);
+t_list	*f_memlist(void);
 
-	if (!(ptr = malloc(size)))
-		return (NULL);
-	f_bzero(ptr, size);
-	s_list_append(f_memlist(), ptr);
-	return (ptr);
-}
+#endif
