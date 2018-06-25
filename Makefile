@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/24 08:50:31 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/25 06:58:53 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\
 			   f_strarrdel.c f_isdigits.c
 F_STRING = $(addprefix f_string/, $(F_STRING_SRC))
 
-F_CNTL_SRC = f_memlist.c f_exit.c
+F_CNTL_SRC = f_exit.c
 F_CNTL = $(addprefix f_cntl/, $(F_CNTL_SRC))
 
 S_GRID_SRC = s_grid_create.c s_grid_get.c s_grid_init.c s_grid_print.c\
@@ -68,7 +68,7 @@ S_GRAPH_SRC = s_graph_add_vert.c s_graph_create.c s_vert_add_adj.c\
 S_GRAPH =  $(addprefix s_graph/, $(S_GRAPH_SRC))
 
 OBJ_LIST = $(patsubst %.c, %.o, $(F_IO) $(F_MATH) $(F_MEMORY) $(F_PRINT)\
-				$(F_STRING) $(S_GRID) $(S_LIST) $(S_DSTR) $(S_GRAPH))
+				$(F_STRING) $(F_CNTL) $(S_GRID) $(S_LIST) $(S_DSTR) $(S_GRAPH))
 BIN_PATH = bin
 BIN = $(addprefix $(BIN_PATH)/, $(OBJ_LIST))
 
