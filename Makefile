@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/25 06:58:53 by wseegers         ###   ########.fr        #
+#    Updated: 2018/06/27 16:40:11 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,10 +65,15 @@ S_GRAPH_SRC = s_graph_add_vert.c s_graph_create.c s_vert_add_adj.c\
 			  s_vert_has_edge.c s_vert_cost.c dijkstra.c s_vert_set_cost.c\
 			  s_vert_reset_path.c s_graph_reset_path.c s_graph_equ.c\
 			  s_graph_print_verts.c
-S_GRAPH =  $(addprefix s_graph/, $(S_GRAPH_SRC))
+S_GRAPH = $(addprefix s_graph/, $(S_GRAPH_SRC))
+
+S_VECTOR_SRC = vector_add.c vector_create.c vector_free.c vector_get.c\
+			   vector_init.c vector_remove.c vector_resize.c vector_set.c
+S_VECTOR = $(addprefix s_vector/, $(S_VECTOR_SRC))
 
 OBJ_LIST = $(patsubst %.c, %.o, $(F_IO) $(F_MATH) $(F_MEMORY) $(F_PRINT)\
-				$(F_STRING) $(F_CNTL) $(S_GRID) $(S_LIST) $(S_DSTR) $(S_GRAPH))
+				$(F_STRING) $(F_CNTL) $(S_GRID) $(S_LIST) $(S_DSTR) $(S_GRAPH)\
+				$(S_VECTOR))
 BIN_PATH = bin
 BIN = $(addprefix $(BIN_PATH)/, $(OBJ_LIST))
 
