@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 15:47:26 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/27 16:46:21 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/27 16:55:35 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct	s_vector
 	size_t	capacity;
 }				t_vector;
 
-# define VECTOR_GET(vec, type, index) (type)vetor_get(vec, index)
+# define VECTOR_GET(vec, type, index) (type)vec->data[index]
 
 t_vector	*vector_create(void);
 void		vector_resize(t_vector *vector, size_t size);
