@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 07:44:11 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/13 10:36:27 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:14:10 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		s_vert_add_adj(t_vert *vert, t_vert *neighbour, long cost)
 {
 	long *costptr;
 
+	if (!vert || !neighbour)
+		return (0);
 	if (s_vert_has_edge(vert, neighbour))
 		return (0);
 	s_list_append(vert->edges, neighbour);
