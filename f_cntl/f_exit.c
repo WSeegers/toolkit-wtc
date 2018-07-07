@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 08:28:53 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/24 08:52:50 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/07 10:34:26 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	f_exit(int code)
 {
-	exit (code);
+	exit(code);
 }
 
 void	f_eexit(int code, char *s)
