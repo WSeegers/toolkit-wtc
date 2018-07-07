@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 20:35:10 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/12 05:59:35 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/07 21:15:19 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int							pf_handle_int(char *buf, t_tag *tag,
 	}
 	if (tag->spec == 'X')
 		f_striter(buf, hextoupper);
+	if (!nbr && tag->p_set && !tag->precision)
+		buf[0] = '\0';
 	add_prefix(buf, tag);
 	return (pf_padding(buf, tag, n));
 }

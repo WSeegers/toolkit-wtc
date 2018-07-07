@@ -6,11 +6,12 @@
 #    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/27 16:40:11 by wseegers         ###   ########.fr        #
+#    Updated: 2018/07/07 20:39:29 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = toolkit-wtc.a
+#NAME = toolkit-wtc.a
+NAME = libftprintf.a
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 INC := -I include
@@ -31,7 +32,7 @@ F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c pf_handle_str.c\
 			  f_printf.c pf_get_tag.c parse_tag.c init_tag.c\
 			  pf_nbrtostr.c pf_wctostr.c pf_wstrtostr.c\
 			  s_tag_get_width.c s_tag_get_prec.c pf_padding.c f_vdprintf.c\
-			  pf_handle_int.c
+			  pf_handle_int.c f_putchar.c 
 F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 
 F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\

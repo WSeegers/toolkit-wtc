@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:06:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 13:23:52 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/07 18:25:49 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stddef.h>
 # include <stdarg.h>
 # include "s_printf_tag.h"
+# include "f_string.h"
+# include "f_memory.h"
+# include "s_dstr.h"
+# include "f_math.h"
 
 # define PF_BUFFSIZE 512
 

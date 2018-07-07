@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 13:36:27 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/07 22:18:02 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "f_string.h"
 #include "f_memory.h"
 #include "f_print.h"
+#include "f_math.h"
 
 static const char	*get_flags(t_tag *tag, const char *format)
 {
@@ -40,22 +41,44 @@ static const char	*get_flags(t_tag *tag, const char *format)
 	}
 	return (format);
 }
-
-static const char	*get_width_prec(t_tag *tag, const char *format)
+#include <stdio.h>
+static void			va_width_prec(t_tag *tag, const char *format, va_list ap)
 {
-	if (*format == '*' && format++)
-		tag->va_width = true;
-	else if (f_isdigit(*format))
+	int	arg;
+
+	while (*format == '*' && format++)
+	{
+		if (*format == '.' && format++)
+		{
+			tag->p_set = true;
+			tag->precision = va_arg(ap, int);
+		}
+		else
+		{
+			arg = va_arg(ap, int);
+			if (arg < 0)
+				tag->left_just = true;
+			if (!arg)
+				tag->zeropad = true;
+			tag->min_width = f_abs(arg);
+		}
+	}
+}
+
+static const char	*get_width_prec(t_tag *tag, const char *format, va_list ap)
+{
+	if (*format == '*')
+		va_width_prec(tag, format, ap);
+	if (f_isdigit(*format))
 	{
 		tag->min_width = f_atoi(format);
 		while (f_isdigit(*format))
 			format++;
 	}
-	if (*format == '.' && format++)
+	else if (*format == '.' && format++)
 	{
-		if (*format == '*')
-			tag->va_prec = true;
-		else if (f_isdigit(*format))
+		tag->p_set = true;
+		if (f_isdigit(*format))
 		{
 			tag->precision = f_atoi(format);
 			while (f_isdigit(*format))
@@ -93,20 +116,20 @@ static const char	*get_mem_size(t_tag *tag, const char *format)
 static const char	*get_spec(t_tag *tag, const char *format)
 {
 	if (f_strchr(SPECS, *format))
+	{
 		tag->spec = *format++;
+		if (tag->spec == 'p')
+			tag->mem_size = sizeof(long long);
+	}
 	return (format);
 }
 
-t_tag				*parse_tag(const char *format)
+void				parse_tag(t_tag *tag, const char *format, va_list ap)
 {
-	t_tag *tag;
-
-	tag = (t_tag*)f_memalloc(sizeof(*tag));
 	init_tag(tag);
 	format = get_flags(tag, format + 1);
-	format = get_width_prec(tag, format);
+	format = get_width_prec(tag, format, ap);
 	format = get_mem_size(tag, format);
 	format = get_spec(tag, format);
 	tag->format = format;
-	return (tag);
 }

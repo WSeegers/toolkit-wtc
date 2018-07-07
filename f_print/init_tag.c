@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:17:31 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 13:36:59 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/07 19:36:07 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_tag(t_tag *tag)
 	tag->zeropad = false;
 	tag->min_width = 0;
 	tag->va_width = false;
+	tag->p_set = false;
 	tag->precision = 0;
 	tag->va_prec = false;
 	tag->mem_size = 0;
