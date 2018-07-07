@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/07 22:18:02 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/07 22:36:52 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "f_print.h"
 #include "f_math.h"
 
+#include <stdio.h>
 static const char	*get_flags(t_tag *tag, const char *format)
 {
 	bool is_flag;
@@ -41,25 +42,26 @@ static const char	*get_flags(t_tag *tag, const char *format)
 	}
 	return (format);
 }
-#include <stdio.h>
-static void			va_width_prec(t_tag *tag, const char *format, va_list ap)
+static void			va_width_prec(t_tag *tag, const char **format, va_list ap)
 {
 	int	arg;
 
-	while (*format == '*' && format++)
+	while (**format == '*' && (*format)++)
 	{
-		if (*format == '.' && format++)
+		if (**format == '.' && (*format)++)
 		{
-			tag->p_set = true;
-			tag->precision = va_arg(ap, int);
+			arg = va_arg(ap, int);
+			if (!arg)
+				tag->zeropad = true;
+			else
+				tag->p_set = true;
+			tag->precision = f_abs(arg);
 		}
 		else
 		{
 			arg = va_arg(ap, int);
 			if (arg < 0)
 				tag->left_just = true;
-			if (!arg)
-				tag->zeropad = true;
 			tag->min_width = f_abs(arg);
 		}
 	}
@@ -68,14 +70,14 @@ static void			va_width_prec(t_tag *tag, const char *format, va_list ap)
 static const char	*get_width_prec(t_tag *tag, const char *format, va_list ap)
 {
 	if (*format == '*')
-		va_width_prec(tag, format, ap);
+		va_width_prec(tag, &format, ap);
 	if (f_isdigit(*format))
 	{
 		tag->min_width = f_atoi(format);
 		while (f_isdigit(*format))
 			format++;
 	}
-	else if (*format == '.' && format++)
+	if (*format == '.' && format++)
 	{
 		tag->p_set = true;
 		if (f_isdigit(*format))
