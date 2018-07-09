@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/07 22:17:01 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 16:51:25 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ size_t	pf_handle_chr(char *buf, int fd, t_tag *tag, va_list ap)
 	size_t	i;
 	size_t	width;
 
-	c = va_arg(ap, int) & 0xff;
+	if (tag->spec == 'c')
+		c = va_arg(ap, int) & 0xff;
+	else
+		c = tag->spec;
 	width = f_max(tag->min_width, 1);
 	i = 0;
 	if (tag->left_just)
@@ -70,27 +73,24 @@ static int		handle_tag(int fd, const char **format, va_list ap)
 
 	parse_tag(&tag, *format, ap);
 	*format = tag.format;
-	if (tag.spec)
-	{
-		if (f_strchr(STR_SPEC, tag.spec))
-			pf_handle_str(buf, &tag, ap, sizeof(buf) - 1);
-		else if (f_strchr(INT_SPEC, tag.spec))
-			pf_handle_int(buf, &tag, ap, sizeof(buf) - 1);
-		else if (tag.spec == '%')
-			pf_padding(buf, &tag, sizeof(buf) - 1);
-		else if (tag.spec == 'C' ||
-							(tag.spec == 'c' && tag.mem_size >= sizeof(int)))
-			return (pf_handle_wchr(buf, fd, &tag, ap));
-		else if (tag.spec == 'c')
-			return (pf_handle_chr(buf, fd, &tag, ap));
-	}
+	if (f_strchr(STR_SPEC, tag.spec))
+		pf_handle_str(buf, &tag, ap, sizeof(buf) - 1);
+	else if (f_strchr(INT_SPEC, tag.spec))
+		pf_handle_int(buf, &tag, ap, sizeof(buf) - 1);
+	else if (tag.spec == 'C' ||
+						(tag.spec == 'c' && tag.mem_size >= sizeof(int)))
+		return (pf_handle_wchr(buf, fd, &tag, ap));
+	else if (tag.spec == 'c')
+		return (pf_handle_chr(buf, fd, &tag, ap));
+	else
+		return (pf_handle_chr(buf, fd, &tag, ap));
 	return (f_print_str_fd(fd, buf));
 }
 
 static size_t	write_till_tag(int fd, const char *format)
 {
 	char *tag;
-
+	
 	if ((tag = get_tag(format)) && tag > format)
 		return (write(fd, format, f_strchr(format, '%') - format));
 	if (tag == format)

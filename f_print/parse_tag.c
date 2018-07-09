@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/07 22:36:52 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 16:48:07 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,9 @@ static const char	*get_mem_size(t_tag *tag, const char *format)
 
 static const char	*get_spec(t_tag *tag, const char *format)
 {
-	if (f_strchr(SPECS, *format))
-	{
-		tag->spec = *format++;
-		if (tag->spec == 'p')
-			tag->mem_size = sizeof(long long);
-	}
+	tag->spec = *format++;
+	if (tag->spec == 'p')
+		tag->mem_size = sizeof(long long);
 	return (format);
 }
 

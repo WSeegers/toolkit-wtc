@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:06:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/07 18:25:49 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 17:05:30 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define PF_BUFFSIZE 512
 
 int	pf_nbrtostr(long long nbr, char *str, unsigned int base,
-													unsigned int min_width);
+													t_tag *tag);
 int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base,
 													unsigned int min_width);
 int	pf_ftostr(long double nbr, char *str, unsigned int precision);

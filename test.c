@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/07 17:00:16 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/07 22:36:30 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 17:31:48 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int main(void)
 	setlocale (LC_ALL, "");
 
 	printf("sy: ");
-	printf("%15.4s", "42");
+	printf("{%10d}", 42);
 	puts("...");
 	f_printf("ft: ");
-	f_printf("%15.4s", "42");
+	f_printf("{%10d}", 42);
 	puts("...");
 }

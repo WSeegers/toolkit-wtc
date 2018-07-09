@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 10:57:03 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/07 21:07:37 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 17:28:38 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int static	pf_pad_nbr(char *buf, t_tag *tag, size_t n)
 		else
 			f_memset(buf, ' ', tag->min_width - buflen);
 	}
-	buf[tag->min_width] = '\0';
 	return (tag->min_width);
 }
 

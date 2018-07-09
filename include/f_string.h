@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 17:36:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/24 08:25:59 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 16:44:11 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int		f_isblank(int c);
 int		f_isspace(int c);
 int		f_isdigit(int c);
 int		f_isdigits(char *s);
+int		f_isprint(char c);
 
 #endif

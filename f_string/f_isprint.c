@@ -6,11 +6,11 @@
 /*   By: WSeegers <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 01:19:18 by WSeegers          #+#    #+#             */
-/*   Updated: 2018/04/21 12:51:54 by WSeegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 16:43:08 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isprint(int c)
+int		f_isprint(int c)
 {
 	return (c >= 32 && c < 127);
 }
