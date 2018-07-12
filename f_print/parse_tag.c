@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 16:48:07 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 18:53:55 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,9 @@ void				parse_tag(t_tag *tag, const char *format, va_list ap)
 	format = get_flags(tag, format + 1);
 	format = get_width_prec(tag, format, ap);
 	format = get_mem_size(tag, format);
-	format = get_spec(tag, format);
+	if (*format)
+	{
+		format = get_spec(tag, format);
+	}
 	tag->format = format;
 }

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 22:00:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/07 20:47:23 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 22:32:36 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int		pf_handle_str(char *buf, t_tag *tag, va_list ap, size_t n)
 {
 	char	*str;
-	int 	*wstr;
+	int		*wstr;
 
 	s_tag_get_width(tag, ap);
 	s_tag_get_prec(tag, ap);

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/07 17:00:16 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 17:31:48 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/12 07:17:17 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ int main(void)
 	int i;
 	char c;
 
-	setlocale (LC_ALL, "");
-
-	printf("sy: ");
-	printf("{%10d}", 42);
-	puts("...");
+	//setlocale (LC_ALL, "");
+	for (int k = 1; k > 0; k++)
+	{
 	f_printf("ft: ");
-	f_printf("{%10d}", 42);
-	puts("...");
+	f_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	f_printf("\n");
+	}
+	//printf("sy: ");
+	//printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+	//printf("\n");
 }

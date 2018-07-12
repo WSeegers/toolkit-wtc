@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 16:51:25 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/12 07:11:49 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,24 @@
 #include "include/f_printf.h"
 #include "f_print.h"
 
-#include <stdio.h>
-/*
-** These are cases that still need to be implimented
-**
-** else if (f_strchr(FLT_SPEC, tag->spec))
-** 	pf_handle_float();
-** else if (f_strchr(OTH_SPEC, tag->spec))
-** 	pf_handle_other();
-*/
-
 size_t	pf_handle_chr(char *buf, int fd, t_tag *tag, va_list ap)
 {
 	char	c;
 	size_t	i;
 	size_t	width;
+	char 	pad;
 
 	if (tag->spec == 'c')
 		c = va_arg(ap, int) & 0xff;
 	else
 		c = tag->spec;
+	(tag->zeropad) ? pad = '0' : ' ';
 	width = f_max(tag->min_width, 1);
 	i = 0;
 	if (tag->left_just)
 		i += write(fd, &c, 1); 
 	while (--width > 0)
-		 i += write(fd, " ", 1);	
+		 i += write(fd, &pad, 1);	
 	if (!tag->left_just)
 		i += write(fd, &c, 1);
 	buf[tag->min_width] = '\0';
@@ -70,10 +62,12 @@ static int		handle_tag(int fd, const char **format, va_list ap)
 {
 	t_tag	tag;
 	char	buf[PF_BUFFSIZE];
-
+	
 	parse_tag(&tag, *format, ap);
 	*format = tag.format;
-	if (f_strchr(STR_SPEC, tag.spec))
+	if (!tag.spec)
+		return (0);
+	else if (f_strchr(STR_SPEC, tag.spec))
 		pf_handle_str(buf, &tag, ap, sizeof(buf) - 1);
 	else if (f_strchr(INT_SPEC, tag.spec))
 		pf_handle_int(buf, &tag, ap, sizeof(buf) - 1);

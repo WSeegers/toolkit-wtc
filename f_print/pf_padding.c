@@ -6,44 +6,62 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 10:57:03 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 17:28:38 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 21:46:24 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "include/f_printf.h"
 #include "include/s_printf_tag.h"
 #include "f_memory.h"
 #include "f_string.h"
 #include "f_math.h"
 
+static void pad_prec_int(char *buf, t_tag *tag)
+{
+	char temp[PF_BUFFSIZE];
+	char *b_ptr;
+	char *t_ptr;
+	size_t buflen;
+	int i;
+
+	i = 0;
+	if ((buf[0] == '0' && f_toupper(buf[1]) == 'X'))
+		i = 2;
+	else if (buf[0] == '-' || buf[0] == '+')
+		i = 1;
+	if (tag->zeropad && !tag->left_just)
+		tag->precision = (tag->min_width < tag->precision) ? tag->precision :
+			tag->min_width - i;
+	if ((buflen = f_strlen(buf + i)) > tag->precision)
+		return ;
+	f_strcpy(temp, buf + i);
+	f_memset(buf + i, '0', tag->precision);
+	b_ptr = f_strchr(buf, 0) - 1;
+	t_ptr = f_strchr(temp, 0) - 1;
+	while (buflen--)
+		*b_ptr-- = *t_ptr--;
+}
+
 int static	pf_pad_nbr(char *buf, t_tag *tag, size_t n)
 {
-	size_t	buflen;
-	
-	tag->min_width = f_max(tag->min_width, tag->precision);
-	if (n <= (buflen = f_strlen(buf)) || buflen > tag->min_width)
-		return (buflen);
-	tag->min_width = f_min(tag->min_width, n - buflen);
-	if (buflen < tag->precision)
+	size_t i;
+
+	(void)n;
+	pad_prec_int(buf, tag);
+	i = f_strlen(buf);
+	if (i < tag->min_width && !tag->left_just)
 	{
-		f_memmove(buf + tag->precision - buflen, buf, buflen);
-		if (tag->zeropad)
-			f_memset(buf, '0', tag->precision - buflen);
-		else
-			f_memset(buf, ' ', tag->precision - buflen);	
-		buflen = tag->precision;
+		f_memmove(buf + (tag->min_width - i), buf, f_strlen(buf));
+		f_memset(buf, ' ', (tag->min_width - i));
 	}
-	if (tag->left_just)
-		f_memset(buf + buflen, ' ', tag->min_width - buflen);
-	else
+	else 
 	{
-		f_memmove(buf + tag->min_width - buflen, buf, buflen);
-		if (!tag->p_set && tag->zeropad)
-			f_memset(buf, '0', tag->min_width - buflen);
-		else
-			f_memset(buf, ' ', tag->min_width - buflen);
+		while (i < tag->min_width)
+			buf[i++] = ' ';
+		buf[i] = '\0';
 	}
-	return (tag->min_width);
+	return (0);
 }
 
 int	static	pf_pad_str(char *buf, t_tag *tag, size_t n)

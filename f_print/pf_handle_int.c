@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 20:35:10 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 17:32:13 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 19:43:05 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int							pf_handle_int(char *buf, t_tag *tag,
 {
 	long long			nbr;
 	unsigned int		base;
-	size_t				ret;
 
 	tag->mem_size = f_strchr("DOU", tag->spec) ? sizeof(long) : tag->mem_size;
 	base = 10;
@@ -84,18 +83,18 @@ int							pf_handle_int(char *buf, t_tag *tag,
 	if (f_strchr("uUxXoOp", tag->spec))
 	{
 		nbr = get_size_mask(tag->mem_size, va_arg(ap, long long), false);
-		pf_unbrtostr(nbr, buf, base, tag->precision);
+		pf_unbrtostr(nbr, buf, base);
 	}
 	else
 	{
 		nbr = get_size_mask(tag->mem_size, va_arg(ap, long long), true);
-		pf_nbrtostr(nbr, buf, base, tag);
+		pf_nbrtostr(nbr, buf, base);
 	}
 	if (tag->spec == 'X')
 		f_striter(buf, hextoupper);
 	if (!nbr && tag->p_set && !tag->precision)
 		buf[0] = '\0';
-	add_prefix(buf, tag);
-	ret = pf_padding(buf, tag, n);
-	return (ret);
+	if ((f_strlen(buf) && buf[0] != '0') || tag->spec == 'o' || tag->spec == 'O')
+		add_prefix(buf, tag);
+	return (pf_padding(buf, tag, n));
 }

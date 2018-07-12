@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:06:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 17:05:30 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/09 21:35:11 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 # include <stddef.h>
 # include <stdarg.h>
+# include "f_print.h"
 # include "s_printf_tag.h"
 # include "f_string.h"
 # include "f_memory.h"
 # include "s_dstr.h"
 # include "f_math.h"
+# include <stdio.h>
 
 # define PF_BUFFSIZE 512
 
-int	pf_nbrtostr(long long nbr, char *str, unsigned int base,
-													t_tag *tag);
-int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base,
-													unsigned int min_width);
+int	pf_nbrtostr(long long nbr, char *str, unsigned int base);
+int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base);
 int	pf_ftostr(long double nbr, char *str, unsigned int precision);
 int	pf_wstrtostr(char *buf, int *wstr, size_t n);
 int	pf_wctostr(char *buf, int c);
