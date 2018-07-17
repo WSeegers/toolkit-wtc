@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 11:37:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/17 23:48:32 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/18 01:04:18 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct		s_grid_point
 
 t_grid				*grid_create(void);
 void				grid_init(t_grid *grid, int width, int height);
-int					grid_get(t_grid *grid, int row, int col);
+int					grid_get(t_grid *grid, int x, int y);
 void				grid_print_fd(int fd, t_grid *grid);
 void				grid_print(t_grid *grid);
-void				grid_set(t_grid *grid, int val, int row, int col);
+void				grid_set(t_grid *grid, int val, int x, int y);
 
 #endif
