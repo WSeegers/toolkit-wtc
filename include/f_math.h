@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:53:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/16 11:35:46 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/17 21:03:44 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define MIN(n1, n2)    (n1 < n2) ? n1 : n2
 # define MAX(n1, n2)    (n1 > n2) ? n1 : n2
+# define CLAMP(n, min, max)	(n < min ? min : (n > max ? max : n))
 
 long long	f_abs(long long nbr);
 long		f_min(long base, long test);

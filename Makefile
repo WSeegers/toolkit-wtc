@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+         #
+#    By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/06/27 16:40:11 by wseegers         ###   ########.fr        #
+#    Updated: 2018/07/17 23:46:22 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,8 @@ F_STRING = $(addprefix f_string/, $(F_STRING_SRC))
 F_CNTL_SRC = f_exit.c
 F_CNTL = $(addprefix f_cntl/, $(F_CNTL_SRC))
 
-S_GRID_SRC = s_grid_create.c s_grid_get.c s_grid_init.c s_grid_print.c\
-			 s_grid_search.c s_grid_set.c
+S_GRID_SRC = grid_create.c grid_get.c grid_init.c grid_print.c\
+			 grid_set.c
 S_GRID = $(addprefix s_grid/, $(S_GRID_SRC))
 
 S_LIST_SRC = s_list_append.c s_list_create.c s_list_node_create.c\

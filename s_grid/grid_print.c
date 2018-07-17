@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_grid_print.c                                     :+:      :+:    :+:   */
+/*   grid_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 13:13:41 by wseegers          #+#    #+#             */
-/*   Updated: 2018/05/31 20:33:51 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/17 23:54:02 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "f_print.h"
 #include "f_math.h"
 
-void	s_grid_print_fd(int fd, t_grid *grid)
+void	grid_print_fd(int fd, t_grid *grid)
 {
 	int row;
 	int col;
@@ -27,14 +27,14 @@ void	s_grid_print_fd(int fd, t_grid *grid)
 		f_print_str_fd(fd, "| ");
 		while (++col < grid->width)
 		{
-			f_print_nbr_fd(fd, s_grid_get(grid, row, col));
+			f_print_nbr_fd(fd, grid_get(grid, row, col));
 			f_print_str_fd(fd, " | ");
 		}
 		f_print_str_fd(fd, "\n");
 	}
 }
 
-void	s_grid_print(t_grid *grid)
+void	grid_print(t_grid *grid)
 {
-	s_grid_print_fd(1, grid);
+	grid_print_fd(1, grid);
 }

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_grid_get.c                                       :+:      :+:    :+:   */
+/*   grid_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/29 12:37:22 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/02 02:21:43 by wseegers         ###   ########.fr       */
+/*   Created: 2018/05/29 11:49:34 by wseegers          #+#    #+#             */
+/*   Updated: 2018/07/17 23:36:11 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "s_grid.h"
+#include "f_memory.h"
 
-int		s_grid_get(t_grid *grid, int row, int col)
+t_grid				*grid_create(void)
 {
-	if (row >= grid->height || col >= grid->width)
-		return (0xffffffff);
-	return (grid->plane[((row * grid->width) + col)]);
+	return ((t_grid*)f_memalloc(sizeof(t_grid)));
 }
