@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 11:37:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/18 01:04:18 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/18 08:34:14 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@ typedef struct		s_grid
 	int		width;
 	int		height;
 }					t_grid;
-
-typedef struct		s_grid_point
-{
-	int		col;
-	int		row;
-	int		value;
-}					t_grid_point;
 
 # define GRID_GET(grid, x, y)	(grid.data[(y * grid.width) + x])
 
