@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_io.h                                             :+:      :+:    :+:   */
+/*   f_closef.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/30 09:35:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/25 11:09:48 by wseegers         ###   ########.fr       */
+/*   Created: 2018/07/25 11:01:34 by wseegers          #+#    #+#             */
+/*   Updated: 2018/07/25 11:09:26 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef F_IO_H
-# define F_IO_H
+#include <unistd.h>
+#include "f_io.h"
+#include "f_string.h"
 
-# include <unistd.h>
-# include <stddef.h>
-# include "s_file.h"
-
-t_file	*f_openf(char *path, char mode);
-ssize_t	f_readf(char *ptr, t_file *file, size_t n);
-ssize_t	f_writef(t_file *file, char *ptr, size_t n);
-ssize_t	f_next_line(char **ptr, t_file *file);
-void	f_skip_line(t_file *file);
-void	f_closef(t_file *file);
-
-#endif
+void	f_closef(t_file *file)
+{
+	if (!file)
+		return ;
+	if (file->fd_in > 2)
+	{
+		close(file->fd_in);
+		file->fd_in = -1;
+	}
+	if (file->fd_out > 2)
+	{
+		close(file->fd_out);
+		file->fd_out = -1;
+	}
+	f_strdel(&file->buf);
+	f_strdel(&file->path);
+}
