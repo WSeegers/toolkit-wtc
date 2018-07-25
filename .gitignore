@@ -1,2 +1,2 @@
-bin/*/*.d
-toolkit-wtc.a
+*.d
+*.a
