@@ -6,12 +6,12 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 10:33:47 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/24 14:16:43 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/25 10:15:02 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WTX_MAC_KEYS_H
-# define WTX_MAC_KEYS_H
+#ifndef WFX_MAC_KEYS_H
+# define WFX_MAC_KEYS_H
 
 # define KEY_A 0
 # define KEY_S 1

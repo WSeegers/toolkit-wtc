@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 10:35:10 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/25 08:27:46 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/25 10:15:35 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_vec2i	get_clip(t_vec2i window, t_vec2 v1, t_vec2 v2, t_oct_code check)
 		temp.y = v1.y + (v2.y - v1.y) * (-v1.x + (window.x)) / (v2.x - v1.x);
 		temp.x = window.x;
 	}
-	else //if (check & OCT_LEFT)
+	else
 	{
 		temp.y = v1.y + (v2.y - v1.y) * (-v1.x) / (v2.x - v1.x);
 		temp.x = 0;
@@ -55,7 +55,7 @@ static t_vec2i	get_clip(t_vec2i window, t_vec2 v1, t_vec2 v2, t_oct_code check)
 	return (temp);
 }
 
-int			clip(t_window *window, t_vec2i *p1, t_vec2i *p2)
+int				clip(t_window *window, t_vec2i *p1, t_vec2i *p2)
 {
 	t_oct_code	p_oct[2];
 	t_oct_code	check;
