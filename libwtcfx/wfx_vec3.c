@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wfx_vec2_op2.c                                     :+:      :+:    :+:   */
+/*   wfx_vec3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/17 09:19:58 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/26 20:02:49 by wseegers         ###   ########.fr       */
+/*   Created: 2018/07/26 19:47:33 by wseegers          #+#    #+#             */
+/*   Updated: 2018/07/26 20:00:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libwtcfx.h"
 
-t_vec2	vec2_rotate(t_vec2 v, double rad)
+t_vec3		*vec3_create(void)
 {
-	double s;
-	double c;
-
-	c = cos(rad);
-	s = sin(rad);
-	return (VEC2(v.x * c + v.y * -s, v.x * s + v.y * c));
+	return (f_memalloc(sizeof(t_vec3)));
 }
 
-double	vec2_angle(t_vec2 v)
+void		vec3_init(t_vec3 *v, t_vec3 val)
 {
-	return (atan(v.y / v.x));
+	*v = val;
+}
+
+t_vec3		*vec3_copy(t_vec3 v)
+{
+	t_vec3	*ret;
+
+	ret = vec3_create();
+	vec3_init(ret, v);
+	return (ret);
 }

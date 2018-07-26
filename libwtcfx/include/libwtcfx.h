@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libwtcfx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/15 18:47:21 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/25 09:53:23 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/26 20:30:58 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stddef.h>
 # include <time.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "wfx_mac_keys.h"
 # include "f_memory.h"
 # include "f_cntl.h"
@@ -38,14 +39,13 @@ typedef	struct	s_vec2i
 
 t_vec2i			*vec2i_create();
 void			vec2i_init(t_vec2i *v2, int x, int y);
-t_vec2i			*vec2i_copy(t_vec2i *v);
-t_vec2i			vec2i_add(t_vec2i v1, t_vec2i v2);
-t_vec2i			vec2i_sub(t_vec2i v1, t_vec2i v2);
-t_vec2i			vec2i_scale(t_vec2i v1, int scalar);
+void			*vec2i_copy(t_vec2i *v);
+void			vec2i_add(t_vec2i *v1, t_vec2i v2);
+void			vec2i_sub(t_vec2i *v1, t_vec2i v2);
+void			vec2i_scale(t_vec2i *v1, int scalar);
 
 # define VEC2I(x, y)		((t_vec2i){(int)(x), (int)(y)})
 # define VEC2_TO_F(v)		(VEC2((double)v.x, (double)v.y))
-# define SET_VEC2I(v, x, y)	(v.x = (int)(x); v.y = (int)(y))
 # define ADD_VEC2I(v1, v2)	(NEW_VEC2I(v1.x + v2.x, v1.y + v2.y))
 # define SUB_VEC2I(v1, v2)	(NEW_VEC2I(v1.x - v2.x, v1.y - v2.y))
 
@@ -56,23 +56,62 @@ typedef struct	s_vec2
 }				t_vec2;
 
 t_vec2			*vec2_create();
-void			vec2_init(t_vec2 *v2, double x, double y);
-t_vec2			*vec2_copy(t_vec2 *v);
-t_vec2			vec2_add(t_vec2 v1, t_vec2 v2);
-t_vec2			vec2_sub(t_vec2 v1, t_vec2 v2);
-t_vec2			vec2_scale(t_vec2 v1, double scalar);
+void			vec2_init(t_vec2 *v, t_vec2 val);
+t_vec2			*vec2_copy(t_vec2 v);
+void			vec2_add(t_vec2 *v1, t_vec2 v2);
+void			vec2_sub(t_vec2 *v1, t_vec2 v2);
+void			vec2_scale(t_vec2 *v1, double scalar);
 double			vec2_len(t_vec2 v);
 t_vec2			vec2_rotate(t_vec2 v, double rad);
-t_vec2			vec2_norm(t_vec2 v);
+t_vec2			vec2_norm(t_vec2 *v);
 double			vec2_angle(t_vec2 v);
 t_vec2			vec2_at_len(t_vec2 v, double len);
 
-# define VEC2(x, y)				((t_vec2){(double)(x), (double)(y)})
-# define VEC2_TO_I(v)			(VEC2I((int)v.x, (int)v.y))
-# define SET_VEC2(v, x, y)		(v.x = (double)(x); v.y = (double)(y))
-# define ADD_VEC2(v1, v2)		(VEC2(v1.x + v2.x, v1.y + v2.y))
-# define SUB_VEC2(v1, v2)		(VEC2(v1.x - v2.x, v1.y - v2.y))
-# define LEN_VEC2(v)			(sqrt(v.x * v.x + v.y * v.y))
+# define VEC2(x, y)			((t_vec2){(double)(x), (double)(y)})
+# define VEC2_TO_I(v)		(VEC2I((int)v.x, (int)v.y))
+# define ADD_VEC2(v1, v2)	(VEC2(v1.x + v2.x, v1.y + v2.y))
+# define SUB_VEC2(v1, v2)	(VEC2(v1.x - v2.x, v1.y - v2.y))
+# define LEN_VEC2(v)		(sqrt(v.x * v.x + v.y * v.y))
+# define DOT_VEC3(v1, v2)	(v1.x * v2.x + v1.y * v2.y)
+
+typedef struct	s_vec3
+{
+	double x;
+	double y;
+	double z;
+}				t_vec3;
+
+t_vec3			*vec3_create();
+void			vec3_init(t_vec3 *v, t_vec3 val);
+t_vec3			*vec3_copy(t_vec3 v);
+void			vec3_add(t_vec3 *v1, t_vec3 v2);
+void			vec3_sub(t_vec3 *v1, t_vec3 v2);
+void			vec3_scale(t_vec3 *v1, double scalar);
+void			vec3_norm(t_vec3 *v);
+t_vec3			vec3_cross(t_vec3 v1, t_vec3 v2);
+
+# define VEC3(x, y, z)		((t_vec3){(double)(x), (double)(y), (double)(z)})
+# define VEC3_TO_I(v)		(VEC3I((int)v.x, (int)v.y))
+# define ADD_VEC3(v1, v2)	(VEC3(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z))
+# define SUB_VEC3(v1, v2)	(VEC3(v1.x - v2.x, v1.y - v2.y, v1.z + v2.z))
+# define SCALE_VEC3(v, s)	(VEC3(v.x * s, v.y * s, v.z * s))
+# define LEN2_VEC3(v)		(v.x * v.x + v.y * v.y + v.z * v.z)
+# define LEN_VEC3(v)		(sqrt(LEN2_VEC3(v)))
+# define NORM_VEC3(v)		(SCALE_VEC3((v), 1 / LEN_VEC3(v)))
+# define DOT_VEC3(v1, v2)	(v1.x * v2.x + v1.y * v2.y + v1.z * v2.z)
+
+# define MIN_INTERCEPT 0.0001
+# define MAX_INTERCEPT 1.0e30
+
+typedef struct	s_ray
+{
+	t_vec3	origin;
+	t_vec3	direction;
+	double	tmax;
+}				t_ray;
+
+# define RAY(s, t)			((t_ray){s, NORM_VEC3(t), })
+# define CALC_RAY(r, t)	(ADD_VEC3(r.origin, SCALE_VEC3(r.direction, t)))
 
 typedef	struct	s_image
 {
@@ -115,9 +154,6 @@ typedef	struct	s_window
 	t_image			*back;
 	clock_t			last_blit;
 	unsigned long	frame_count;
-	long			fps;
-	int				resx;
-	int				resy;
 }				t_window;
 
 t_window		*wfx_create_window(void);
