@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/07 17:00:16 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/12 07:17:17 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 02:06:03 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 
 int main(void)
 {
-	int i;
-	char c;
-
-	//setlocale (LC_ALL, "");
-	for (int k = 1; k > 0; k++)
-	{
-	f_printf("ft: ");
-	f_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
-	f_printf("\n");
-	}
-	//printf("sy: ");
-	//printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
-	//printf("\n");
+	ft_printf("FT :%#.o %#.0o\n", 0, 0);
+	   printf("SYS:%#.o %#.0o\n", 0, 0);
+	fflush(NULL);
+	f_printf("FT :%#llX\n", 922337203685477);
+	printf(  "SYS:%#llX\n", 922337203685477);
+	fflush(NULL);
+	f_printf("FT :%#-x\n", 23);
+	printf(  "SYS:%#x\n", 23);
+	fflush(NULL);
+	f_printf("FT : |%.o|---|%#.x|\n", 0, 0);
+	printf(  "SYS: |%.o|---|%#.x|\n", 0, 0);
+	fflush(NULL);
 }
+

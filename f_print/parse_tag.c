@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_tag.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 18:53:55 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/27 18:40:39 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static const char	*get_mem_size(t_tag *tag, const char *format)
 	else if (*format == 'j' && format++)
 		tag->mem_size = sizeof(intmax_t);
 	else if (*format == 'z' && format++)
-		tag->mem_size = sizeof(size_t);
+		tag->mem_size = sizeof(ssize_t);
 	return (format);
 }
 

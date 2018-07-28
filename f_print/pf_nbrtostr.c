@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pf_nbrtostr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 19:39:54 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 19:00:45 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/27 18:41:27 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "f_memory.h"
 #include "f_string.h"
 #include "include/s_printf_tag.h"
-
+// Potential to remove pf_nbrtostr
 int	pf_nbrtostr(long long nbr, char *str, unsigned int base)
 {
 	unsigned int		i;

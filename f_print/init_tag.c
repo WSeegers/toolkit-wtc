@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_tag.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:17:31 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 15:27:44 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/27 21:14:01 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ void	init_tag(t_tag *tag)
 	tag->precision = 0;
 	tag->va_prec = false;
 	tag->mem_size = 0;
+	tag->is_neg = 0;
+	tag->space = 0;
 }

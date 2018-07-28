@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_vdprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/12 07:11:49 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/27 19:04:43 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,92 +15,32 @@
 #include "include/f_printf.h"
 #include "f_print.h"
 
-size_t	pf_handle_chr(char *buf, int fd, t_tag *tag, va_list ap)
-{
-	char	c;
-	size_t	i;
-	size_t	width;
-	char 	pad;
+#include <stdio.h> // Remove
 
-	if (tag->spec == 'c')
-		c = va_arg(ap, int) & 0xff;
-	else
-		c = tag->spec;
-	(tag->zeropad) ? pad = '0' : ' ';
-	width = f_max(tag->min_width, 1);
-	i = 0;
-	if (tag->left_just)
-		i += write(fd, &c, 1); 
-	while (--width > 0)
-		 i += write(fd, &pad, 1);	
-	if (!tag->left_just)
-		i += write(fd, &c, 1);
-	buf[tag->min_width] = '\0';
-	return (i);
-}
-
-size_t	pf_handle_wchr(char *buf, int fd, t_tag *tag, va_list ap)
-{
-	int		c;
-	size_t	i;
-	size_t	width;
-
-	c = va_arg(ap, int);
-	width = f_max(tag->min_width, 1);
-	i = 0;
-	if (tag->left_just)
-		 i += f_putchar_fd(c, fd); 
-	while (--width > 0)
-		 i += write(fd, " ", 1);	
-	if (!tag->left_just)
-		 i += f_putchar_fd(c, fd); 
-	buf[tag->min_width] = '\0';
-	return (i);
-}
-
-static int		handle_tag(int fd, const char **format, va_list ap)
+static char	*handle_tag(const char **format, va_list ap)
 {
 	t_tag	tag;
-	char	buf[PF_BUFFSIZE];
-	
+
 	parse_tag(&tag, *format, ap);
 	*format = tag.format;
-	if (!tag.spec)
-		return (0);
-	else if (f_strchr(STR_SPEC, tag.spec))
-		pf_handle_str(buf, &tag, ap, sizeof(buf) - 1);
-	else if (f_strchr(INT_SPEC, tag.spec))
-		pf_handle_int(buf, &tag, ap, sizeof(buf) - 1);
-	else if (tag.spec == 'C' ||
-						(tag.spec == 'c' && tag.mem_size >= sizeof(int)))
-		return (pf_handle_wchr(buf, fd, &tag, ap));
-	else if (tag.spec == 'c')
-		return (pf_handle_chr(buf, fd, &tag, ap));
-	else
-		return (pf_handle_chr(buf, fd, &tag, ap));
-	return (f_print_str_fd(fd, buf));
+	if (f_strchr(INT_SPEC, tag.spec))
+		return (pf_handle_int(&tag, ap));
+	return ("|tag|");
 }
 
-static size_t	write_till_tag(int fd, const char *format)
+int			f_vdprintf(int fd, const char *format, va_list ap)
 {
-	char *tag;
-	
-	if ((tag = get_tag(format)) && tag > format)
-		return (write(fd, format, f_strchr(format, '%') - format));
-	if (tag == format)
-		return (0);
-	return (f_print_str_fd(fd, format));
-}
+	int			ret;
+	t_buffer	buf;
 
-int				f_vdprintf(int fd, const char *format, va_list ap)
-{
-	int		ret;
-
-	ret = write_till_tag(fd, format);
-	while ((format = get_tag(format)))
+	buf.pos = -1;
+	buf.total = 0;
+	while (*format)
 	{
-		ret += handle_tag(fd, &format, ap);
-		ret += write_till_tag(fd, format);
+		buffer_fmt(&buf, &format, fd);
+		if (*format)
+			buffer_arg(&buf, handle_tag(&format, ap), fd);
 	}
-	return (ret);
+	flush(fd, &buf);
+	return (buf.total);
 }

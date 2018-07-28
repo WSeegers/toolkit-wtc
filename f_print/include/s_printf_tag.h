@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_printf_tag.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 20:56:38 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 18:32:50 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 01:31:38 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define SPECS "sSpdDioOuUxXcCeEfFgGaAn%"
 # define INT_SPEC "pdDioOuUxX"
-# define STR_SPEC "sS"
+# define STR_SPEC "cCsS"
 # define FLT_SPEC "eEfFgGaA"
 # define OTH_SPEC "n%"
 
@@ -36,14 +36,15 @@ typedef struct	s_tag
 
 	size_t		min_width;
 	bool		va_width;
+	int			diff;
 
 	bool		p_set;
 	size_t		precision;
 	bool		va_prec;
 
 	size_t		mem_size;
-
 	const char	*format;
+	bool		is_neg;
 }				t_tag;
 
 void			init_tag(t_tag *tag);

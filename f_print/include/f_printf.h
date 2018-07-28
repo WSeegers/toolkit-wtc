@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_printf.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:06:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 21:35:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/27 10:29:30 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "f_memory.h"
 # include "s_dstr.h"
 # include "f_math.h"
+# include "s_dstr.h"
 # include <stdio.h>
 
 # define PF_BUFFSIZE 512
@@ -32,6 +33,18 @@ int	pf_wstrtostr(char *buf, int *wstr, size_t n);
 int	pf_wctostr(char *buf, int c);
 int	pf_padding(char *buf, t_tag *tag, size_t n);
 int	pf_handle_str(char *buf, t_tag *tag, va_list ap, size_t n);
-int	pf_handle_int(char *buf, t_tag *tag, va_list ap, size_t n);
+
+char	*pf_handle_int(t_tag *tag, va_list ap);
+
+typedef	struct	s_buffer
+{
+	char	data[PF_BUFFSIZE];
+	ssize_t	pos;
+	size_t	total;
+}				t_buffer;
+
+void	flush(int fd, t_buffer *buf);
+void	buffer_fmt(t_buffer *buf, const char **format, int fd);
+void	buffer_arg(t_buffer *buf, char *s, int fd);
 
 #endif
