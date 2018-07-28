@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/07/27 10:21:23 by wseegers         ###   ########.fr        #
+#    Updated: 2018/07/28 04:40:11 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c pf_handle_str.c\
 			  f_printf.c pf_get_tag.c parse_tag.c init_tag.c\
 			  pf_nbrtostr.c pf_wctostr.c pf_wstrtostr.c\
 			  s_tag_get_width.c s_tag_get_prec.c pf_padding.c f_vdprintf.c\
-			  pf_handle_int.c f_putchar.c pf_buffer.c
+			  pf_handle_int.c f_putchar.c pf_buffer.c pf_handle_char.c
 F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 
 F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\

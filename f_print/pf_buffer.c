@@ -6,38 +6,52 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:16:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/27 10:20:01 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 05:07:50 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/f_printf.h"
 
-void	flush(int fd, t_buffer *buf)
+void	flush(t_buffer *buf)
 {
-	buf->total += write(fd, buf->data, buf->pos + 1);
+	buf->total += write(buf->fd, buf->data, buf->pos + 1);
 	buf->pos = -1;
 }
 
-void	buffer_fmt(t_buffer *buf, const char **format, int fd)
+void	buffer_fmt(t_buffer *buf, const char **format)
 {
 	char *fmt;
 
 	fmt = (char*)*format;
 	while (*fmt && *fmt != '%')
 	{
-		if (buf->pos == PF_BUFFSIZE)
-			flush(fd, buf);
+		if (buf->pos == PF_BUFFSIZE - 2)
+		{
+			flush(buf);
+			f_bzero(&buf, sizeof(buf));
+		}
 		buf->data[++buf->pos] = *fmt++;
 	}
 	*format = fmt;
 }
 
-void	buffer_arg(t_buffer *buf, char *s, int fd)
+void	buffer_arg(t_buffer *buf, char *s)
 {
+	char *ptr;
+
+	ptr = s;
 	while (*s)
 	{
-		if (buf->pos == PF_BUFFSIZE)
-			flush(fd, buf);
+		if (buf->pos == PF_BUFFSIZE - 2)
+			flush(buf);
 		buf->data[++buf->pos] = *s++;
 	}
+	free(ptr);
+}
+
+void 	buffer_char(t_buffer *buf, char c)
+{
+	if (buf->pos == PF_BUFFSIZE)
+		flush(buf);
+	buf->data[++buf->pos] = c;
 }

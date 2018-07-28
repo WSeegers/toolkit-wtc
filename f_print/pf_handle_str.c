@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_handle_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 22:00:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/09 22:32:36 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 05:18:02 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,30 @@
 #include "include/s_printf_tag.h"
 #include "include/f_printf.h"
 
-int		pf_handle_str(char *buf, t_tag *tag, va_list ap, size_t n)
+char	*pf_handle_str(t_tag *tag, va_list ap)
 {
+	char	wchr[4];
 	char	*str;
+	char 	*new;
 	int		*wstr;
 
-	s_tag_get_width(tag, ap);
-	s_tag_get_prec(tag, ap);
 	if (tag->spec == 'S' || (tag->spec == 's' && tag->mem_size >= sizeof(int)))
 	{
 		if (!(wstr = va_arg(ap, int*)))
-			f_strncpy(buf, "(null)", n);
+			return (f_strdup("(null)"));
 		else
-			pf_wstrtostr(buf, wstr, n);
+			str = pf_wstrtostr(wstr);
 	}
 	else if (tag->spec == 's')
 	{
 		if (!(str = va_arg(ap, char*)))
-			str = "(null)";
-		f_strncpy(buf, str, n);
+			return (f_strdup("(null)"));
 	}
-	return (pf_padding(buf, tag, n));
+	if (tag->p_set)
+	{
+		new = f_strnew(tag->precision);
+		f_memcpy(new, str, tag->precision);
+		return (new);
+	}
+	return (f_strdup(str));
 }

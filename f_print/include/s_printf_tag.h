@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 20:56:38 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 01:31:38 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 02:59:38 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct	s_tag
 	bool		zeropad;
 	bool		sep;
 
+	bool		mw_set;
 	size_t		min_width;
 	bool		va_width;
 	int			diff;
@@ -43,8 +44,8 @@ typedef struct	s_tag
 	bool		va_prec;
 
 	size_t		mem_size;
-	const char	*format;
 	bool		is_neg;
+	const char	*format;
 }				t_tag;
 
 void			init_tag(t_tag *tag);

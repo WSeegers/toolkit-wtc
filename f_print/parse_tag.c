@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/27 18:40:39 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 03:33:56 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,41 +42,39 @@ static const char	*get_flags(t_tag *tag, const char *format)
 	}
 	return (format);
 }
+
 static void			va_width_prec(t_tag *tag, const char **format, va_list ap)
 {
 	int	arg;
 
-	while (**format == '*' && (*format)++)
+	if (((*format)[0] == '*') && (*format)++)
 	{
-		if (**format == '.' && (*format)++)
-		{
-			arg = va_arg(ap, int);
-			if (!arg)
-				tag->zeropad = true;
-			else
-				tag->p_set = true;
-			tag->precision = f_abs(arg);
-		}
-		else
-		{
-			arg = va_arg(ap, int);
-			if (arg < 0)
-				tag->left_just = true;
-			tag->min_width = f_abs(arg);
-		}
+		arg = va_arg(ap, int);
+		if (arg < 0)
+			tag->left_just = true;
+		tag->min_width = f_abs(arg);
+	}
+	if (((*format)[0] == '.' && (*format)[1] == '*') && ((*format) += 2))
+	{
+		arg = va_arg(ap, int);
+		if (arg < 0)
+			return ;
+		tag->p_set = true;
+		tag->precision = f_abs(arg);
 	}
 }
 
 static const char	*get_width_prec(t_tag *tag, const char *format, va_list ap)
 {
-	if (*format == '*')
-		va_width_prec(tag, &format, ap);
+	va_width_prec(tag, &format, ap);
 	if (f_isdigit(*format))
 	{
 		tag->min_width = f_atoi(format);
 		while (f_isdigit(*format))
 			format++;
+		tag->mw_set = true;
 	}
+	va_width_prec(tag, &format, ap);
 	if (*format == '.' && format++)
 	{
 		tag->p_set = true;

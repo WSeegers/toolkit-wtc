@@ -3,35 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   pf_wstrtostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wseegers <wseegers.mauws@gmail.com>        +#+  +:+       +#+        */
+/*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 09:38:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/06/10 13:32:57 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 04:02:11 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/f_printf.h"
 #include "f_memory.h"
+#include "f_string.h"
 #include <stdio.h>
 
-int		pf_wstrtostr(char *buf, int *wstr, size_t n)
+char	*pf_wstrtostr(int *wstr)
 {
-	char	bufc[5];
-	size_t	i;
+	char	bufc[4];
+	char	*buf;
+	char	*temp;
 	size_t	clen;
+	int		len;
 
-	i = 0;
+	len = 512;
+	buf = f_strnew(len);
 	while (*wstr)
 	{
-		clen = pf_wctostr(bufc, *wstr++);
-		if (i + clen < n)
+		clen += pf_wctostr(bufc, *wstr++);
+
+		if (clen + 4 > len)
 		{
-			f_memcpy(buf + i, bufc, clen);
-			i += clen;
+			temp = buf;
+			buf = f_strnew((len *= 2));
+			f_strcpy(buf, temp);
+			f_strdel(&temp);
 		}
-		else
-			break ;
+		f_strlcat(buf, bufc, len);
 	}
-	buf[i] = '\0';
-	return (i);
+	return (buf);
 }

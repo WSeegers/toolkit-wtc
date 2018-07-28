@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/07 17:00:16 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 02:06:03 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 05:20:09 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,23 @@
 
 int main(void)
 {
-	ft_printf("FT :%#.o %#.0o\n", 0, 0);
-	   printf("SYS:%#.o %#.0o\n", 0, 0);
-	fflush(NULL);
-	f_printf("FT :%#llX\n", 922337203685477);
-	printf(  "SYS:%#llX\n", 922337203685477);
-	fflush(NULL);
-	f_printf("FT :%#-x\n", 23);
-	printf(  "SYS:%#x\n", 23);
-	fflush(NULL);
-	f_printf("FT : |%.o|---|%#.x|\n", 0, 0);
-	printf(  "SYS: |%.o|---|%#.x|\n", 0, 0);
-	fflush(NULL);
-}
+	int i;
 
+	setlocale (LC_ALL, "");
+	f_printf("FT :%C\n", 0);
+	  printf("FT :%C\n", 0);
+	fflush(NULL);
+
+	f_printf("FT :%s\n", "abc");
+	  printf("SYS:%s\n", "abc");
+	fflush(NULL);
+
+	f_printf("FT :%lc, %lc\n", L'暖', L'ح');
+	  printf("SYS:%lc, %lc\n", L'暖', L'ح');
+	fflush(NULL);
+
+	f_printf("FT :%#X\n", 42);
+	  printf("SYS:%#X\n", 42);
+	fflush(NULL);
+
+}

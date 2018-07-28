@@ -1,2 +1,4 @@
 *.d
 .vscode/tasks.json
+.vscode/settings.json
+libftprintf.a

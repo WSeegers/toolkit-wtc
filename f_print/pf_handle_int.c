@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 20:35:10 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 02:20:52 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/28 02:50:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char	*handle_width(t_tag *tag, char *buf)
 	size_t	len;
 	char	*ret;
 
-	if (buf[0] && (!tag->zeropad || tag->p_set))
+	if ((buf[0] && (!tag->zeropad || tag->p_set)) || tag->spec == 'p')
 		add_prefix(buf, tag, false);
 	len = f_strlen(buf);
 	tag->diff = tag->min_width - len;
@@ -152,9 +152,10 @@ char	*pf_handle_int(t_tag *tag, va_list ap)
 	if (nbr_buf[0] == '0' && tag->p_set && !tag->precision &&
 		!(f_toupper(tag->spec) == 'O' && tag->prefix))
 		nbr_buf[0] = '\0';
-	else if (tag->spec == 'X')
-		hextoupper(nbr_buf);
 	buf1 = handle_precision(tag, nbr_buf);
 	buf2 = handle_width(tag, buf1);
+	f_strdel(&buf1);
+	if (tag->spec == 'X')
+		hextoupper(buf2);
 	return (buf2);
 }
