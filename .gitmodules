@@ -1,3 +1,6 @@
 [submodule "test/lib-utest"]
 	path = .test/lib-utest
 	url = http://github.com/WSeegers/lib-utest.git
+[submodule "libwtcc"]
+	path = libwtcc
+	url = https://github.com/wseegers/libwtcc.git
