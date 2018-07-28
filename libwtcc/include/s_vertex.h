@@ -1,1 +1,0 @@
-../s_graph/include/s_vertex.h
