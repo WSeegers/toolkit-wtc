@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 20:06:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/30 11:59:10 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 15:28:34 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,11 @@ void	buffer_fmt(t_buffer *buf, const char **format);
 void	buffer_arg(t_buffer *buf, char *s);
 void	buffer_char(t_buffer *buf, char c);
 
-int	pf_nbrtostr(long long nbr, char *str, unsigned int base);
 int	pf_unbrtostr(unsigned long long unbr, char *str, unsigned int base);
 int	pf_ftostr(long double nbr, char *str, unsigned int precision);
 int	pf_wctostr(char *buf, int c);
-int	pf_padding(char *buf, t_tag *tag, size_t n);
 
+bool	pf_handle_colour(t_buffer *buf, char **s);
 char	*pf_handle_int(t_tag *tag, va_list ap);
 char	*pf_wstrtostr(int *wstr, bool p_set, int precision);
 char	*pf_handle_str(t_tag *tag, va_list ap);

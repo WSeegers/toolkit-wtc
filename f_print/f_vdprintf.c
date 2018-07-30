@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/30 12:30:44 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 15:31:47 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <unistd.h>
 #include "include/f_printf.h"
 #include "f_print.h"
-
-#include <stdio.h> // Remove
 
 static void	handle_tag(const char **format, va_list ap, t_buffer *buf)
 {

@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/07/30 12:37:52 by wseegers         ###   ########.fr        #
+#    Updated: 2018/07/30 15:29:51 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ F_MEMORY_SRC = f_membzero.c f_memchr.c f_memcpy.c f_memmove.c f_rawmemchr.c\
 F_MEMORY = $(addprefix f_memory/, $(F_MEMORY_SRC))
 
 F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c pf_handle_str.c\
-			  f_printf.c pf_get_tag.c parse_tag.c init_tag.c\
-			  pf_nbrtostr.c pf_wctostr.c pf_wstrtostr.cf_vdprintf.c\
+			  f_printf.c pf_get_tag.c pf_parse_tag.c pf_init_tag.c\
+			  pf_nbrtostr.c pf_wctostr.c pf_wstrtostr.c f_vdprintf.c\
 			  pf_handle_int.c f_putchar.c pf_buffer.c pf_handle_char.c
 F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 
