@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/07 17:00:16 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 05:20:09 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 12:33:09 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,24 @@ int main(void)
 	int i;
 
 	setlocale (LC_ALL, "");
-	f_printf("FT :%C\n", 0);
-	  printf("FT :%C\n", 0);
+	f_printf("FT :{%.5S}\n", L"我是一只猫。");
+	  printf("SYS:{%.5S}\n", L"我是一只猫。");
 	fflush(NULL);
 
-	f_printf("FT :%s\n", "abc");
-	  printf("SYS:%s\n", "abc");
+	f_printf("FT :%10R\n");
+	  printf("SYS:%10R\n");
+	fflush(NULL);
+
+	f_printf("FT :%05s\n", "This is a string");
+	  printf("SYS:%05s\n", "This is a string");
+	fflush(NULL);
+
+	f_printf("FT :%-20s\n", "This is a string");
+	  printf("SYS:%-20s\n", "This is a string");
+	fflush(NULL);
+
+	f_printf("FT :%-10.5s\n", "This is a string");
+	  printf("SYS:%-10.5s\n", "This is a string");
 	fflush(NULL);
 
 	f_printf("FT :%lc, %lc\n", L'暖', L'ح');

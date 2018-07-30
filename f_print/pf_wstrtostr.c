@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 09:38:18 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 04:02:11 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 12:06:33 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "f_string.h"
 #include <stdio.h>
 
-char	*pf_wstrtostr(int *wstr)
+char	*pf_wstrtostr(int *wstr, bool p_set, int precision)
 {
 	char	bufc[4];
 	char	*buf;
@@ -28,8 +28,9 @@ char	*pf_wstrtostr(int *wstr)
 	while (*wstr)
 	{
 		clen += pf_wctostr(bufc, *wstr++);
-
-		if (clen + 4 > len)
+		if (p_set && clen > precision)
+			return (buf);
+		if (clen > len)
 		{
 			temp = buf;
 			buf = f_strnew((len *= 2));

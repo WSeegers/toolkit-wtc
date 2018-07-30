@@ -6,31 +6,49 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 04:31:12 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 05:22:49 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 12:18:05 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/f_printf.h"
 
+static void	padding(int i, t_buffer *buf, bool zero)
+{
+	char c;
+
+	if (zero)
+		c = '0';
+	else
+		c = ' ';
+	while (i)
+	{
+		buffer_char(buf, c);
+		i--;
+	}
+}
+
 void	pf_handle_char(t_tag *tag, va_list ap, t_buffer *buf)
 {
 	char	wchar[4];
+	int		len;
+	int		i;
 
-	f_bzero(wchar, 4);
+	i = -1;
 	if (tag->spec == 'C' || (tag->spec == 'c' && tag->mem_size >= sizeof(int)))
 	{
 		pf_wctostr(wchar, va_arg(ap, int));
-		buffer_char(buf, wchar[0]);
-		if (!wchar[1])
-			return ;
-		buffer_char(buf, wchar[1]);
-		if (!wchar[2])
-			return ;
-		buffer_char(buf, wchar[2]);
-		if (!wchar[3])
-			return ;
-		buffer_char(buf, wchar[3]);
+		len = f_strlen(wchar);
+		if (len < 1)
+			len = 1;
 	}
-	else
-		buffer_char(buf, (char)va_arg(ap, int));
+	else if (tag->spec == '%' && (len = 1))
+		wchar[0] = '%';
+	else if ((len = 1))
+		wchar[0] = (char)va_arg(ap, int);
+	if (tag->min_width > 1 && !tag->left_just)
+		padding(tag->min_width - len, buf, tag->zeropad);
+	while (++i < len)
+		buffer_char(buf, wchar[i]);
+	if (tag->min_width > 1 && tag->left_just)
+		padding(tag->min_width - len, buf, false);
 }

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 22:37:56 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 03:33:56 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 12:29:23 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,11 @@ static const char	*get_mem_size(t_tag *tag, const char *format)
 
 static const char	*get_spec(t_tag *tag, const char *format)
 {
-	tag->spec = *format++;
+	//printf("specf: %c\n", format[0]); fflush(NULL);
+	if (f_strchr(SPECS, format[0]))
+		tag->spec = *format++;
+	else
+		return (format);
 	if (tag->spec == 'p')
 		tag->mem_size = sizeof(long long);
 	return (format);
@@ -132,4 +136,5 @@ void				parse_tag(t_tag *tag, const char *format, va_list ap)
 		format = get_spec(tag, format);
 	}
 	tag->format = format;
+	//printf("spect: %c\n", tag->spec); fflush(NULL);
 }

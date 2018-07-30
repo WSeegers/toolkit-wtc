@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 10:16:59 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 05:07:50 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 12:36:57 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	buffer_arg(t_buffer *buf, char *s)
 			flush(buf);
 		buf->data[++buf->pos] = *s++;
 	}
-	free(ptr);
+	f_strdel(&ptr);
 }
 
-void 	buffer_char(t_buffer *buf, char c)
+void	buffer_char(t_buffer *buf, char c)
 {
 	if (buf->pos == PF_BUFFSIZE)
 		flush(buf);

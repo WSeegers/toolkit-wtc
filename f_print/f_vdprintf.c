@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 17:23:17 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/28 05:04:06 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 12:30:44 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@
 
 #include <stdio.h> // Remove
 
-static void handle_tag(const char **format, va_list ap, t_buffer *buf)
+static void	handle_tag(const char **format, va_list ap, t_buffer *buf)
 {
 	t_tag	tag;
 
 	parse_tag(&tag, *format, ap);
 	*format = tag.format;
+	if (!tag.spec)
+		return ;
 	if (f_strchr(INT_SPEC, tag.spec))
 		buffer_arg(buf, pf_handle_int(&tag, ap));
 	else if (f_strchr("sS", tag.spec))
 		buffer_arg(buf, pf_handle_str(&tag, ap));
-	else if (f_strchr("cC", tag.spec))
+	else if (f_strchr("cC%", tag.spec))
 		pf_handle_char(&tag, ap, buf);
 	return ;
 }
