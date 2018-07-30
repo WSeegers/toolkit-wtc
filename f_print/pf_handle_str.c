@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 22:00:06 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/30 12:02:32 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 15:49:42 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*handle_width(t_tag *tag, char *str)
 	return (new);
 }
 
-char	*pf_handle_str(t_tag *tag, va_list ap)
+char		*pf_handle_str(t_tag *tag, va_list ap)
 {
 	char	wchr[4];
 	char	*str;

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/28 04:31:12 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/30 12:18:05 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 16:18:02 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	padding(int i, t_buffer *buf, bool zero)
 	}
 }
 
-void	pf_handle_char(t_tag *tag, va_list ap, t_buffer *buf)
+void		pf_handle_char(t_tag *tag, va_list ap, t_buffer *buf)
 {
 	char	wchar[4];
 	int		len;

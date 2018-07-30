@@ -6,7 +6,7 @@
 #    By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/30 06:27:18 by wseegers          #+#    #+#              #
-#    Updated: 2018/07/30 15:29:51 by wseegers         ###   ########.fr        #
+#    Updated: 2018/07/30 16:22:41 by wseegers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ F_MEMORY = $(addprefix f_memory/, $(F_MEMORY_SRC))
 F_PRINT_SRC = f_print_char.c f_print_nbr.c  f_print_str.c pf_handle_str.c\
 			  f_printf.c pf_get_tag.c pf_parse_tag.c pf_init_tag.c\
 			  pf_nbrtostr.c pf_wctostr.c pf_wstrtostr.c f_vdprintf.c\
-			  pf_handle_int.c f_putchar.c pf_buffer.c pf_handle_char.c
+			  pf_handle_int1.c f_putchar.c pf_buffer.c pf_handle_char.c\
+			  pf_handle_int2.c pf_get_width_prec.c
 F_PRINT = $(addprefix f_print/, $(F_PRINT_SRC))
 
 F_STRING_SRC = f_strcmp.c f_strdel.c f_strdup.c f_strlcat.c f_strlen.c\

@@ -6,7 +6,7 @@
 /*   By: wseegers <wseegers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 20:56:38 by wseegers          #+#    #+#             */
-/*   Updated: 2018/07/30 12:21:46 by wseegers         ###   ########.fr       */
+/*   Updated: 2018/07/30 15:34:14 by wseegers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_tag
 	char		spec;
 
 	bool		left_just;
-	bool		force_sign;
+	bool		sign;
 	bool		space;
 	bool		prefix;
 	bool		zeropad;
